@@ -18,7 +18,7 @@
   <meta property="og:url" content="https://thisisvietnam.com/food/">
   <meta property="og:title" content="Vietnamese Food & Cuisine - History, Culture & Meaning">
   <meta property="og:description" content="Explore Vietnamese cuisine beyond recipes. The cultural meaning behind Vietnam's iconic dishes.">
-  <meta property="og:image" content="https://thisisvietnam.com/images/food/og-image.jpg">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1503764654157-72d979d9af2f?w=1200&h=630&fit=crop">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
@@ -28,12 +28,12 @@
 
   <!-- Favicon & Theme -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <meta name="theme-color" content="#DA251D">
+  <meta name="theme-color" content="#0a0a0a">
 
-  <!-- Fonts -->
+  <!-- Fonts - Cinematic Edition -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <!-- Styles -->
   <link rel="stylesheet" href="/css/style.css">
@@ -93,91 +93,136 @@
   </script>
 </head>
 <body>
+  <!-- Loading Screen -->
+  <div class="loader" aria-hidden="true">
+    <div class="loader__content">
+      <div class="loader__logo">Ẩm Thực</div>
+      <div class="loader__bar">
+        <div class="loader__progress"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" aria-hidden="true"></div>
+
   <a href="#main" class="sr-only">Skip to main content</a>
+
+  <!-- Navigation Overlay -->
+  <div class="nav-overlay" aria-hidden="true">
+    <nav class="nav-overlay__content">
+      <ul class="nav-overlay__list">
+        <li class="nav-overlay__item"><a href="/" class="nav-overlay__link">Home</a></li>
+        <li class="nav-overlay__item"><a href="/history/" class="nav-overlay__link">History</a></li>
+        <li class="nav-overlay__item"><a href="/cities/" class="nav-overlay__link">Cities</a></li>
+        <li class="nav-overlay__item"><a href="/food/" class="nav-overlay__link nav-overlay__link--active">Food</a></li>
+        <li class="nav-overlay__item"><a href="/culture/" class="nav-overlay__link">Culture</a></li>
+        <li class="nav-overlay__item"><a href="/people/" class="nav-overlay__link">People</a></li>
+        <li class="nav-overlay__item"><a href="/war-and-healing/" class="nav-overlay__link">War & Healing</a></li>
+        <li class="nav-overlay__item"><a href="/stories/" class="nav-overlay__link">Stories</a></li>
+      </ul>
+    </nav>
+  </div>
 
   <!-- Header -->
   <header class="header" role="banner">
     <div class="header__inner">
-      <a href="/" class="logo" aria-label="ThisIsVietnam Home">
-        <span class="logo__mark">VN</span>
-        <span class="logo__text">ThisIsVietnam</span>
+      <a href="/" class="header__logo">
+        <span class="header__logo-icon">越</span>
+        <span class="header__logo-text">ThisIsVietnam</span>
       </a>
 
-      <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle navigation">
-        <span class="nav-toggle__bar"></span>
-        <span class="nav-toggle__bar"></span>
-        <span class="nav-toggle__bar"></span>
-      </button>
-
-      <nav class="nav" id="main-nav" aria-hidden="true" aria-label="Main navigation">
-        <ul class="nav__list">
-          <li><a href="/history/" class="nav__link">History</a></li>
-          <li><a href="/cities/" class="nav__link">Cities</a></li>
-          <li><a href="/food/" class="nav__link nav__link--active">Food</a></li>
-          <li><a href="/culture/" class="nav__link">Culture</a></li>
-          <li><a href="/people/" class="nav__link">People</a></li>
-          <li><a href="/war-and-healing/" class="nav__link">War & Healing</a></li>
-          <li><a href="/stories/" class="nav__link">Stories</a></li>
-        </ul>
-        <div class="lang-selector">
-          <button class="lang-selector__btn lang-selector__btn--active" data-lang="en">EN</button>
-          <button class="lang-selector__btn" data-lang="vi">VI</button>
-        </div>
+      <nav class="header__nav" aria-label="Main navigation">
+        <a href="/history/" class="header__nav-link">History</a>
+        <a href="/cities/" class="header__nav-link">Cities</a>
+        <a href="/food/" class="header__nav-link header__nav-link--active">Food</a>
+        <a href="/culture/" class="header__nav-link">Culture</a>
+        <a href="/stories/" class="header__nav-link">Stories</a>
       </nav>
+
+      <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="nav-toggle__line"></span>
+        <span class="nav-toggle__line"></span>
+      </button>
     </div>
   </header>
 
   <!-- Main Content -->
   <main id="main" role="main">
     <!-- Hero Section -->
-    <section class="hero" style="min-height: 70vh;">
-      <div class="hero__bg" aria-hidden="true"></div>
+    <section class="hero hero--full">
+      <div class="hero__bg">
+        <img src="https://images.unsplash.com/photo-1503764654157-72d979d9af2f?w=1920&q=80"
+             alt="Steaming bowl of Vietnamese pho with fresh herbs"
+             class="hero__bg-image"
+             loading="eager">
+        <div class="hero__overlay"></div>
+      </div>
       <div class="hero__content">
-        <span class="hero__tagline">More Than Recipes</span>
-        <h1 class="hero__title">
-          Vietnamese Food
-          <span class="hero__title-accent">Is Identity</span>
+        <span class="hero__overline" data-reveal="up">More Than Recipes</span>
+        <h1 class="hero__title" data-reveal="up">
+          Vietnamese Food<br>
+          <em>Is Identity</em>
         </h1>
-        <p class="hero__subtitle">
+        <p class="hero__subtitle" data-reveal="up">
           Every dish tells a story. Regional pride, family history, survival, and love—served in every bowl.
         </p>
+        <div class="hero__scroll" data-reveal="fade">
+          <span>Explore</span>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 5v14M5 12l7 7 7-7"/>
+          </svg>
+        </div>
       </div>
     </section>
 
-    <!-- Introduction -->
-    <section class="section">
+    <!-- Opening Statement -->
+    <section class="section section--dark">
       <div class="container container--narrow">
-        <div class="prose">
-          <p class="lead" style="font-size: var(--text-xl); text-align: center; color: var(--color-gray-600);">
-            In Vietnam, the greeting "Ăn cơm chưa?"—<em>"Have you eaten rice yet?"</em>—is as common as "How are you?" This tells you everything about food's role in Vietnamese life: it is not sustenance, it is connection. It is culture. It is identity itself.
+        <div class="text-block text-block--center" data-reveal="up">
+          <p class="text-block__large">
+            In Vietnam, the greeting <em>"Ăn cơm chưa?"</em>—"Have you eaten rice yet?"—is as common as "How are you?"
+          </p>
+          <p class="text-block__body">
+            This tells you everything about food's role in Vietnamese life: it is not sustenance, it is connection. It is culture. It is identity itself.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Featured Dishes Section -->
-    <section class="section section--cream">
+    <!-- Image Break: Street Food Scene -->
+    <section class="image-break">
+      <img src="https://images.unsplash.com/photo-1555126634-323283e090fa?w=1920&q=80"
+           alt="Vietnamese street food vendor cooking on sidewalk at night"
+           loading="lazy">
+    </section>
+
+    <!-- Essential Dishes Section -->
+    <section class="section section--dark">
       <div class="container">
-        <div class="section__header">
-          <span class="section__overline">Icons</span>
-          <h2 class="section__title">Essential Dishes</h2>
-          <p class="section__desc">
+        <header class="section-header" data-reveal="up">
+          <span class="section-header__overline">Icons</span>
+          <h2 class="section-header__title">Essential Dishes</h2>
+          <p class="section-header__desc">
             The dishes that define Vietnamese cuisine—each with centuries of history and regional debate.
           </p>
-        </div>
+        </header>
 
-        <div class="card-grid">
+        <div class="dish-grid">
           <!-- Pho -->
-          <article class="card" data-animate>
-            <div class="card__image" style="background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);">
+          <article class="dish-card" data-reveal="up">
+            <div class="dish-card__image">
+              <img src="https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=800&q=80"
+                   alt="Bowl of beef pho with fresh herbs and lime"
+                   loading="lazy">
             </div>
-            <div class="card__content">
-              <span class="card__category">Noodle Soup</span>
-              <h3 class="card__title"><a href="/food/pho/">Phở</a></h3>
-              <p class="card__excerpt">
+            <div class="dish-card__content">
+              <span class="dish-card__category">Noodle Soup</span>
+              <h3 class="dish-card__title">Phở</h3>
+              <p class="dish-card__desc">
                 Vietnam's national dish. Born in Hanoi, transformed in Saigon, debated everywhere. A bowl of broth simmered for hours, rice noodles, and beef or chicken—simple ingredients that took a century to perfect.
               </p>
-              <div class="card__meta">
+              <div class="dish-card__tags">
                 <span>National Icon</span>
                 <span>Regional Variations</span>
               </div>
@@ -185,16 +230,19 @@
           </article>
 
           <!-- Banh Mi -->
-          <article class="card" data-animate>
-            <div class="card__image" style="background: linear-gradient(135deg, #DEB887 0%, #F5DEB3 100%);">
+          <article class="dish-card" data-reveal="up">
+            <div class="dish-card__image">
+              <img src="https://images.unsplash.com/photo-1600454021647-d63c8c57c9e0?w=800&q=80"
+                   alt="Vietnamese banh mi sandwich with crispy baguette"
+                   loading="lazy">
             </div>
-            <div class="card__content">
-              <span class="card__category">Sandwich</span>
-              <h3 class="card__title"><a href="/food/banh-mi/">Bánh Mì</a></h3>
-              <p class="card__excerpt">
-                French baguette meets Vietnamese soul. The perfect fusion food: crispy bread, pâté, pickled vegetables, cilantro, chili—a colonial legacy transformed into something purely Vietnamese.
+            <div class="dish-card__content">
+              <span class="dish-card__category">Sandwich</span>
+              <h3 class="dish-card__title">Bánh Mì</h3>
+              <p class="dish-card__desc">
+                French baguette meets Vietnamese soul. The perfect fusion: crispy bread, pâté, pickled vegetables, cilantro, chili—a colonial legacy transformed into something purely Vietnamese.
               </p>
-              <div class="card__meta">
+              <div class="dish-card__tags">
                 <span>Colonial Fusion</span>
                 <span>Street Food King</span>
               </div>
@@ -202,16 +250,19 @@
           </article>
 
           <!-- Bun Cha -->
-          <article class="card" data-animate>
-            <div class="card__image" style="background: linear-gradient(135deg, #228B22 0%, #556B2F 100%);">
+          <article class="dish-card" data-reveal="up">
+            <div class="dish-card__image">
+              <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=800&q=80"
+                   alt="Bun cha with grilled pork and noodles"
+                   loading="lazy">
             </div>
-            <div class="card__content">
-              <span class="card__category">Noodles</span>
-              <h3 class="card__title"><a href="/food/bun-cha/">Bún Chả</a></h3>
-              <p class="card__excerpt">
+            <div class="dish-card__content">
+              <span class="dish-card__category">Noodles</span>
+              <h3 class="dish-card__title">Bún Chả</h3>
+              <p class="dish-card__desc">
                 Hanoi's other treasure. Charcoal-grilled pork, rice noodles, fresh herbs, and nước chấm dipping sauce. Made globally famous by the Obama-Bourdain meal, but Hanoians have known for generations.
               </p>
-              <div class="card__meta">
+              <div class="dish-card__tags">
                 <span>Hanoi Special</span>
                 <span>Lunch Tradition</span>
               </div>
@@ -219,16 +270,19 @@
           </article>
 
           <!-- Goi Cuon -->
-          <article class="card" data-animate>
-            <div class="card__image" style="background: linear-gradient(135deg, #98FB98 0%, #90EE90 100%);">
+          <article class="dish-card" data-reveal="up">
+            <div class="dish-card__image">
+              <img src="https://images.unsplash.com/photo-1553163147-622ab57be1c7?w=800&q=80"
+                   alt="Fresh Vietnamese spring rolls with shrimp"
+                   loading="lazy">
             </div>
-            <div class="card__content">
-              <span class="card__category">Fresh Rolls</span>
-              <h3 class="card__title"><a href="/food/goi-cuon/">Gỏi Cuốn</a></h3>
-              <p class="card__excerpt">
+            <div class="dish-card__content">
+              <span class="dish-card__category">Fresh Rolls</span>
+              <h3 class="dish-card__title">Gỏi Cuốn</h3>
+              <p class="dish-card__desc">
                 Fresh spring rolls—rice paper wrapped around shrimp, pork, vermicelli, and herbs. No frying, no heat. The purest expression of Vietnamese philosophy: fresh, balanced, light.
               </p>
-              <div class="card__meta">
+              <div class="dish-card__tags">
                 <span>Healthy Classic</span>
                 <span>Home Cooking</span>
               </div>
@@ -236,16 +290,19 @@
           </article>
 
           <!-- Bun Bo Hue -->
-          <article class="card" data-animate>
-            <div class="card__image" style="background: linear-gradient(135deg, #CD5C5C 0%, #8B0000 100%);">
+          <article class="dish-card" data-reveal="up">
+            <div class="dish-card__image">
+              <img src="https://images.unsplash.com/photo-1576577445504-6af96477db52?w=800&q=80"
+                   alt="Spicy bun bo Hue noodle soup"
+                   loading="lazy">
             </div>
-            <div class="card__content">
-              <span class="card__category">Noodle Soup</span>
-              <h3 class="card__title"><a href="/food/bun-bo-hue/">Bún Bò Huế</a></h3>
-              <p class="card__excerpt">
+            <div class="dish-card__content">
+              <span class="dish-card__category">Noodle Soup</span>
+              <h3 class="dish-card__title">Bún Bò Huế</h3>
+              <p class="dish-card__desc">
                 Central Vietnam's spicy masterpiece. Beef and pork bones, lemongrass, shrimp paste, chili oil—complex, fiery, and beloved by those who think phở is too subtle.
               </p>
-              <div class="card__meta">
+              <div class="dish-card__tags">
                 <span>Huế Specialty</span>
                 <span>Spice Lovers</span>
               </div>
@@ -253,16 +310,19 @@
           </article>
 
           <!-- Ca Phe Sua Da -->
-          <article class="card" data-animate>
-            <div class="card__image" style="background: linear-gradient(135deg, #3E2723 0%, #4E342E 100%);">
+          <article class="dish-card" data-reveal="up">
+            <div class="dish-card__image">
+              <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=800&q=80"
+                   alt="Vietnamese iced coffee with condensed milk"
+                   loading="lazy">
             </div>
-            <div class="card__content">
-              <span class="card__category">Beverage</span>
-              <h3 class="card__title"><a href="/food/ca-phe-sua-da/">Cà Phê Sữa Đá</a></h3>
-              <p class="card__excerpt">
+            <div class="dish-card__content">
+              <span class="dish-card__category">Beverage</span>
+              <h3 class="dish-card__title">Cà Phê Sữa Đá</h3>
+              <p class="dish-card__desc">
                 Vietnamese iced coffee. Dark roast, dripped slowly through a phin filter, sweetened with condensed milk. The fuel that powers Vietnam—and a ritual as important as the caffeine.
               </p>
-              <div class="card__meta">
+              <div class="dish-card__tags">
                 <span>Daily Ritual</span>
                 <span>Cultural Icon</span>
               </div>
@@ -272,244 +332,400 @@
       </div>
     </section>
 
+    <!-- Image Break: Fresh Herbs -->
+    <section class="image-break">
+      <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=1920&q=80"
+           alt="Fresh Vietnamese herbs and vegetables at market"
+           loading="lazy">
+    </section>
+
     <!-- Regional Differences -->
-    <section class="section">
+    <section class="section section--dark">
       <div class="container">
-        <div class="section__header">
-          <span class="section__overline">Three Regions</span>
-          <h2 class="section__title">North, Central, South</h2>
-          <p class="section__desc">
+        <header class="section-header" data-reveal="up">
+          <span class="section-header__overline">Three Regions</span>
+          <h2 class="section-header__title">North, Central, South</h2>
+          <p class="section-header__desc">
             Vietnam's three regions don't just cook differently—they think about food differently.
           </p>
-        </div>
+        </header>
 
-        <div class="card-grid">
+        <div class="region-grid">
           <!-- Northern -->
-          <article class="card" data-animate>
-            <div class="card__content">
-              <span class="card__category" style="color: var(--color-water);">Miền Bắc</span>
-              <h3 class="card__title"><a href="/food/northern-cuisine/">Northern Cuisine</a></h3>
-              <p class="card__excerpt">
-                <strong>Subtle. Pure. Restrained.</strong><br><br>
+          <article class="region-card" data-reveal="up">
+            <div class="region-card__image">
+              <img src="https://images.unsplash.com/photo-1509233725247-49e657c54213?w=800&q=80"
+                   alt="Traditional Hanoi street food stall"
+                   loading="lazy">
+            </div>
+            <div class="region-card__content">
+              <span class="region-card__tag" style="color: var(--gold);">Miền Bắc</span>
+              <h3 class="region-card__title">Northern Cuisine</h3>
+              <p class="region-card__subtitle">Subtle. Pure. Restrained.</p>
+              <p class="region-card__desc">
                 The oldest Vietnamese culinary tradition. Less sugar, fewer herbs, cleaner flavors. Hanoi's food reflects Confucian values: simplicity, balance, respect for ingredients. This is where phở was born—and where it's still made most purely.
               </p>
-              <div class="card__meta">
-                <span>Hanoi</span>
-                <span>Tradition</span>
-              </div>
+              <span class="region-card__location">Hanoi • Red River Delta</span>
             </div>
           </article>
 
           <!-- Central -->
-          <article class="card" data-animate>
-            <div class="card__content">
-              <span class="card__category" style="color: var(--color-primary);">Miền Trung</span>
-              <h3 class="card__title"><a href="/food/central-cuisine/">Central Cuisine</a></h3>
-              <p class="card__excerpt">
-                <strong>Complex. Spicy. Royal.</strong><br><br>
+          <article class="region-card" data-reveal="up">
+            <div class="region-card__image">
+              <img src="https://images.unsplash.com/photo-1464500422302-6188776dcbf1?w=800&q=80"
+                   alt="Colorful Hue royal cuisine dishes"
+                   loading="lazy">
+            </div>
+            <div class="region-card__content">
+              <span class="region-card__tag" style="color: var(--vietnam-red);">Miền Trung</span>
+              <h3 class="region-card__title">Central Cuisine</h3>
+              <p class="region-card__subtitle">Complex. Spicy. Royal.</p>
+              <p class="region-card__desc">
                 Huế was the imperial capital, and its cuisine reflects courtly complexity—dozens of small dishes, intricate preparations, bold spices. The spiciest region by far. Bún bò Huế is the signature, but the depth goes far beyond.
               </p>
-              <div class="card__meta">
-                <span>Huế</span>
-                <span>Imperial Heritage</span>
-              </div>
+              <span class="region-card__location">Huế • Imperial Heritage</span>
             </div>
           </article>
 
           <!-- Southern -->
-          <article class="card" data-animate>
-            <div class="card__content">
-              <span class="card__category" style="color: var(--color-jade);">Miền Nam</span>
-              <h3 class="card__title"><a href="/food/southern-cuisine/">Southern Cuisine</a></h3>
-              <p class="card__excerpt">
-                <strong>Sweet. Abundant. Fusion.</strong><br><br>
+          <article class="region-card" data-reveal="up">
+            <div class="region-card__image">
+              <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80"
+                   alt="Abundant Southern Vietnamese food spread"
+                   loading="lazy">
+            </div>
+            <div class="region-card__content">
+              <span class="region-card__tag" style="color: var(--jade);">Miền Nam</span>
+              <h3 class="region-card__title">Southern Cuisine</h3>
+              <p class="region-card__subtitle">Sweet. Abundant. Fusion.</p>
+              <p class="region-card__desc">
                 Saigon's food is younger, sweeter, more influenced by Chinese, Khmer, and French traditions. More coconut milk, more sugar, more herbs piled high. The Mekong Delta's abundance shows in every plate—bigger portions, bolder flavors, more is more.
               </p>
-              <div class="card__meta">
-                <span>Saigon</span>
-                <span>Mekong Influence</span>
-              </div>
+              <span class="region-card__location">Saigon • Mekong Delta</span>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Quote -->
-    <section class="section section--dark">
+    <!-- Quote Section -->
+    <section class="section section--quote">
       <div class="container container--narrow">
-        <blockquote class="quote-block" style="background: transparent; border-left-color: var(--color-gold);" data-animate>
-          <span class="quote-block__icon" style="color: var(--color-gold);">"</span>
-          <p class="quote-block__text" style="color: var(--color-white);">
+        <blockquote class="quote-large" data-reveal="up">
+          <span class="quote-large__mark">"</span>
+          <p class="quote-large__text">
             When I eat phở, I taste my grandmother's kitchen. I taste the morning I left Vietnam. I taste every bowl my mother made when we had nothing else. Food in Vietnam is never just food—it is memory made edible.
           </p>
-          <cite class="quote-block__author" style="color: var(--color-gold-muted);">— Vietnamese-American writer</cite>
+          <footer class="quote-large__footer">
+            <cite>— Vietnamese-American Writer</cite>
+          </footer>
         </blockquote>
       </div>
     </section>
 
+    <!-- Image Break: Market -->
+    <section class="image-break">
+      <img src="https://images.unsplash.com/photo-1534766555764-ce878a5e3a2b?w=1920&q=80"
+           alt="Colorful Vietnamese food market with fresh produce"
+           loading="lazy">
+    </section>
+
     <!-- Street Food Culture -->
-    <section class="section">
+    <section class="section section--dark">
       <div class="container">
-        <div class="section__header">
-          <span class="section__overline">The Real Vietnam</span>
-          <h2 class="section__title">Street Food Culture</h2>
-          <p class="section__desc">
-            The best Vietnamese food isn't in restaurants. It's on tiny plastic stools, on crowded sidewalks, at 6 AM or midnight.
-          </p>
-        </div>
+        <div class="split-content">
+          <div class="split-content__text" data-reveal="left">
+            <span class="section-header__overline">The Real Vietnam</span>
+            <h2 class="section-header__title">Street Food Culture</h2>
+            <p class="text-block__body">
+              The best Vietnamese food isn't in restaurants. It's on tiny plastic stools, on crowded sidewalks, at 6 AM or midnight.
+            </p>
+            <p class="text-block__body">
+              Vietnamese street food is not a curiosity—it is how most Vietnamese eat. The sidewalk vendors, the family-run stalls that have served one dish for three generations, the morning rituals of entire neighborhoods gathering at their local phở shop—this is Vietnamese food at its truest.
+            </p>
 
-        <div class="prose" style="max-width: var(--container-narrow); margin: 0 auto;">
-          <p>
-            Vietnamese street food is not a curiosity—it is how most Vietnamese eat. The sidewalk vendors, the family-run stalls that have served one dish for three generations, the morning rituals of entire neighborhoods gathering at their local phở shop—this is Vietnamese food at its truest.
-          </p>
-
-          <p>
-            <strong>The rules of street food:</strong>
-          </p>
-
-          <ul>
-            <li><strong>Specialization is king.</strong> The best vendors do one thing. If they've been doing it for 30 years, trust them.</li>
-            <li><strong>Follow the locals.</strong> Crowded plastic stools at 6 AM mean you've found the right place.</li>
-            <li><strong>Freshness is everything.</strong> Vietnamese food is made to order, served immediately, eaten hot.</li>
-            <li><strong>No menus, no problems.</strong> Point at what others are eating. Smile. It will be good.</li>
-            <li><strong>Morning is sacred.</strong> Breakfast food—phở, bún, bánh—is when Vietnamese cuisine shines brightest.</li>
-          </ul>
+            <ul class="rules-list">
+              <li><strong>Specialization is king.</strong> The best vendors do one thing. If they've been doing it for 30 years, trust them.</li>
+              <li><strong>Follow the locals.</strong> Crowded plastic stools at 6 AM mean you've found the right place.</li>
+              <li><strong>Freshness is everything.</strong> Vietnamese food is made to order, served immediately, eaten hot.</li>
+              <li><strong>No menus, no problems.</strong> Point at what others are eating. Smile. It will be good.</li>
+              <li><strong>Morning is sacred.</strong> Breakfast food—phở, bún, bánh—is when Vietnamese cuisine shines brightest.</li>
+            </ul>
+          </div>
+          <div class="split-content__image" data-reveal="right">
+            <img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=800&q=80"
+                 alt="Street food vendor preparing noodles on sidewalk"
+                 loading="lazy">
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Browse by Category -->
-    <section class="section section--cream">
+    <!-- Horizontal Scroll: Food Journey -->
+    <section class="section section--dark horizontal-scroll">
+      <header class="section-header" data-reveal="up">
+        <span class="section-header__overline">Visual Journey</span>
+        <h2 class="section-header__title">A Day of Eating</h2>
+      </header>
+
+      <div class="horizontal-scroll__track">
+        <article class="story-card">
+          <div class="story-card__image">
+            <img src="https://images.unsplash.com/photo-1552611052-33e04de081de?w=600&q=80"
+                 alt="Early morning pho breakfast" loading="lazy">
+          </div>
+          <div class="story-card__content">
+            <span class="story-card__time">6:00 AM</span>
+            <h3 class="story-card__title">Phở Sáng</h3>
+            <p class="story-card__desc">Morning pho. The most important meal.</p>
+          </div>
+        </article>
+
+        <article class="story-card">
+          <div class="story-card__image">
+            <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?w=600&q=80"
+                 alt="Vietnamese coffee dripping" loading="lazy">
+          </div>
+          <div class="story-card__content">
+            <span class="story-card__time">8:00 AM</span>
+            <h3 class="story-card__title">Cà Phê</h3>
+            <p class="story-card__desc">Coffee ritual. Slow drip, sweet condensed milk.</p>
+          </div>
+        </article>
+
+        <article class="story-card">
+          <div class="story-card__image">
+            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80"
+                 alt="Banh mi for lunch" loading="lazy">
+          </div>
+          <div class="story-card__content">
+            <span class="story-card__time">12:00 PM</span>
+            <h3 class="story-card__title">Bánh Mì</h3>
+            <p class="story-card__desc">Quick lunch. Perfect street sandwich.</p>
+          </div>
+        </article>
+
+        <article class="story-card">
+          <div class="story-card__image">
+            <img src="https://images.unsplash.com/photo-1548943487-a2e4e43b4853?w=600&q=80"
+                 alt="Afternoon che dessert" loading="lazy">
+          </div>
+          <div class="story-card__content">
+            <span class="story-card__time">3:00 PM</span>
+            <h3 class="story-card__title">Chè</h3>
+            <p class="story-card__desc">Sweet dessert soup. Afternoon refreshment.</p>
+          </div>
+        </article>
+
+        <article class="story-card">
+          <div class="story-card__image">
+            <img src="https://images.unsplash.com/photo-1567620905732-57e1a8e06f15?w=600&q=80"
+                 alt="Family dinner spread" loading="lazy">
+          </div>
+          <div class="story-card__content">
+            <span class="story-card__time">6:00 PM</span>
+            <h3 class="story-card__title">Cơm Gia Đình</h3>
+            <p class="story-card__desc">Family dinner. Many dishes, shared table.</p>
+          </div>
+        </article>
+
+        <article class="story-card">
+          <div class="story-card__image">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80"
+                 alt="Late night BBQ and beer" loading="lazy">
+          </div>
+          <div class="story-card__content">
+            <span class="story-card__time">10:00 PM</span>
+            <h3 class="story-card__title">Nhậu</h3>
+            <p class="story-card__desc">Drinking food. BBQ, seafood, cold beer.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Browse Categories -->
+    <section class="section section--dark">
       <div class="container">
-        <div class="section__header">
-          <span class="section__overline">Browse</span>
-          <h2 class="section__title">Explore by Category</h2>
-        </div>
+        <header class="section-header" data-reveal="up">
+          <span class="section-header__overline">Explore</span>
+          <h2 class="section-header__title">Browse by Category</h2>
+        </header>
 
-        <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-          <a href="/food/noodle-soups/" class="card" style="text-align: center; padding: var(--space-xl);">
-            <h3 style="font-size: var(--text-lg); margin: 0;">Noodle Soups</h3>
-            <p style="font-size: var(--text-sm); color: var(--color-gray-500); margin: var(--space-sm) 0 0;">Phở, bún, hủ tiếu & more</p>
+        <div class="category-grid">
+          <a href="/food/noodle-soups/" class="category-card" data-reveal="up">
+            <div class="category-card__image">
+              <img src="https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=600&q=80"
+                   alt="Vietnamese noodle soup" loading="lazy">
+            </div>
+            <div class="category-card__content">
+              <h3 class="category-card__title">Noodle Soups</h3>
+              <p class="category-card__count">Phở, bún, hủ tiếu & more</p>
+            </div>
           </a>
 
-          <a href="/food/rice-dishes/" class="card" style="text-align: center; padding: var(--space-xl);">
-            <h3 style="font-size: var(--text-lg); margin: 0;">Rice Dishes</h3>
-            <p style="font-size: var(--text-sm); color: var(--color-gray-500); margin: var(--space-sm) 0 0;">Cơm tấm, cơm chiên & more</p>
+          <a href="/food/rice-dishes/" class="category-card" data-reveal="up">
+            <div class="category-card__image">
+              <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?w=600&q=80"
+                   alt="Vietnamese rice dish" loading="lazy">
+            </div>
+            <div class="category-card__content">
+              <h3 class="category-card__title">Rice Dishes</h3>
+              <p class="category-card__count">Cơm tấm, cơm chiên & more</p>
+            </div>
           </a>
 
-          <a href="/food/street-food/" class="card" style="text-align: center; padding: var(--space-xl);">
-            <h3 style="font-size: var(--text-lg); margin: 0;">Street Food</h3>
-            <p style="font-size: var(--text-sm); color: var(--color-gray-500); margin: var(--space-sm) 0 0;">Sidewalk treasures</p>
+          <a href="/food/street-food/" class="category-card" data-reveal="up">
+            <div class="category-card__image">
+              <img src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=600&q=80"
+                   alt="Vietnamese street food stall" loading="lazy">
+            </div>
+            <div class="category-card__content">
+              <h3 class="category-card__title">Street Food</h3>
+              <p class="category-card__count">Sidewalk treasures</p>
+            </div>
           </a>
 
-          <a href="/food/desserts/" class="card" style="text-align: center; padding: var(--space-xl);">
-            <h3 style="font-size: var(--text-lg); margin: 0;">Desserts & Sweets</h3>
-            <p style="font-size: var(--text-sm); color: var(--color-gray-500); margin: var(--space-sm) 0 0;">Chè, bánh & treats</p>
+          <a href="/food/desserts/" class="category-card" data-reveal="up">
+            <div class="category-card__image">
+              <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=600&q=80"
+                   alt="Vietnamese desserts" loading="lazy">
+            </div>
+            <div class="category-card__content">
+              <h3 class="category-card__title">Desserts & Sweets</h3>
+              <p class="category-card__count">Chè, bánh & treats</p>
+            </div>
           </a>
 
-          <a href="/food/drinks/" class="card" style="text-align: center; padding: var(--space-xl);">
-            <h3 style="font-size: var(--text-lg); margin: 0;">Drinks</h3>
-            <p style="font-size: var(--text-sm); color: var(--color-gray-500); margin: var(--space-sm) 0 0;">Coffee, tea, juice</p>
+          <a href="/food/drinks/" class="category-card" data-reveal="up">
+            <div class="category-card__image">
+              <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&q=80"
+                   alt="Vietnamese coffee and drinks" loading="lazy">
+            </div>
+            <div class="category-card__content">
+              <h3 class="category-card__title">Drinks</h3>
+              <p class="category-card__count">Coffee, tea, juice</p>
+            </div>
           </a>
 
-          <a href="/food/vegetarian/" class="card" style="text-align: center; padding: var(--space-xl);">
-            <h3 style="font-size: var(--text-lg); margin: 0;">Vegetarian</h3>
-            <p style="font-size: var(--text-sm); color: var(--color-gray-500); margin: var(--space-sm) 0 0;">Buddhist tradition</p>
+          <a href="/food/vegetarian/" class="category-card" data-reveal="up">
+            <div class="category-card__image">
+              <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80"
+                   alt="Vietnamese vegetarian food" loading="lazy">
+            </div>
+            <div class="category-card__content">
+              <h3 class="category-card__title">Vegetarian</h3>
+              <p class="category-card__count">Buddhist tradition</p>
+            </div>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- FAQ -->
-    <section class="section">
-      <div class="container">
-        <div class="section__header">
-          <h2 class="section__title">Food Questions</h2>
-        </div>
+    <!-- FAQ Section -->
+    <section class="section section--dark faq-section">
+      <div class="container container--narrow">
+        <header class="section-header" data-reveal="up">
+          <h2 class="section-header__title">Food Questions</h2>
+        </header>
 
-        <div class="faq">
-          <details class="faq__item">
-            <summary class="faq__question">
+        <div class="accordion" data-reveal="up">
+          <details class="accordion__item">
+            <summary class="accordion__trigger">
               <span>What is Vietnamese food known for?</span>
-              <span class="faq__icon">+</span>
+              <span class="accordion__icon"></span>
             </summary>
-            <div class="faq__answer">
+            <div class="accordion__content">
               <p>Vietnamese food is known for its <strong>fresh ingredients</strong>, <strong>balance of flavors</strong> (sweet, sour, salty, spicy, and umami), <strong>abundant fresh herbs</strong>, and <strong>regional diversity</strong>. Unlike heavier Asian cuisines, Vietnamese food tends to be lighter, with less oil and more vegetables. Fish sauce (nước mắm) is the essential condiment, and meals emphasize contrasting textures and temperatures.</p>
             </div>
           </details>
 
-          <details class="faq__item">
-            <summary class="faq__question">
+          <details class="accordion__item">
+            <summary class="accordion__trigger">
               <span>Is Vietnamese food healthy?</span>
-              <span class="faq__icon">+</span>
+              <span class="accordion__icon"></span>
             </summary>
-            <div class="faq__answer">
+            <div class="accordion__content">
               <p>Traditional Vietnamese food is considered one of the healthiest cuisines in the world. It emphasizes fresh vegetables, herbs, lean proteins (especially seafood), and rice or rice noodles. Dishes are typically steamed, grilled, or quickly stir-fried rather than deep-fried. The abundance of fresh herbs provides antioxidants and nutrients. However, modern Vietnamese food—especially street food—can include more oil and sugar, so variety and balance remain key.</p>
             </div>
           </details>
 
-          <details class="faq__item">
-            <summary class="faq__question">
+          <details class="accordion__item">
+            <summary class="accordion__trigger">
               <span>Why is fish sauce so important in Vietnamese cooking?</span>
-              <span class="faq__icon">+</span>
+              <span class="accordion__icon"></span>
             </summary>
-            <div class="faq__answer">
+            <div class="accordion__content">
               <p><strong>Nước mắm</strong> (fish sauce) is the backbone of Vietnamese cuisine—used in marinades, dipping sauces, soups, and stir-fries. Made from fermented fish and salt, it provides the umami depth that defines Vietnamese flavor. Different regions have distinct fish sauce styles (Phú Quốc is most famous), and the quality varies enormously. Good fish sauce should smell strong but not rotten, with a rich amber color. Vietnamese cooks judge a dish by its nước mắm balance.</p>
             </div>
           </details>
+
+          <details class="accordion__item">
+            <summary class="accordion__trigger">
+              <span>What's the best time to eat street food in Vietnam?</span>
+              <span class="accordion__icon"></span>
+            </summary>
+            <div class="accordion__content">
+              <p><strong>Early morning (5-8 AM)</strong> is when Vietnamese cuisine truly shines. This is when phở shops are busiest, when bún chả fires are smoking, when bánh cuốn is made fresh. The ingredients are freshest, the vendors are most alert, and you're eating alongside locals on their way to work. Late night (9 PM - midnight) is another magic hour for street food, especially for nhậu (drinking food) culture.</p>
+            </div>
+          </details>
         </div>
+      </div>
+    </section>
+
+    <!-- Final Image -->
+    <section class="image-break image-break--final">
+      <img src="https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=1920&q=80"
+           alt="Vietnamese family sharing a meal together"
+           loading="lazy">
+      <div class="image-break__caption" data-reveal="up">
+        <p>Food is how Vietnam says "I love you"</p>
       </div>
     </section>
   </main>
 
   <!-- Footer -->
-  <footer class="footer" role="contentinfo">
+  <footer class="footer">
     <div class="container">
       <div class="footer__grid">
         <div class="footer__brand">
-          <div class="footer__logo">ThisIsVietnam</div>
-          <p class="footer__desc">
-            A living cultural knowledge system. Vietnam as it is—not explained, experienced.
-          </p>
+          <a href="/" class="footer__logo">
+            <span class="footer__logo-icon">越</span>
+            <span class="footer__logo-text">ThisIsVietnam</span>
+          </a>
+          <p class="footer__tagline">Vietnam as it is—not explained, experienced.</p>
         </div>
 
-        <div>
-          <h4 class="footer__heading">Explore</h4>
-          <ul class="footer__links">
-            <li><a href="/history/">History</a></li>
-            <li><a href="/cities/">Cities & Regions</a></li>
-            <li><a href="/food/">Food & Cuisine</a></li>
-            <li><a href="/culture/">Culture</a></li>
-            <li><a href="/people/">People</a></li>
-          </ul>
-        </div>
+        <nav class="footer__nav">
+          <div class="footer__nav-group">
+            <h4 class="footer__nav-title">Explore</h4>
+            <a href="/history/" class="footer__nav-link">History</a>
+            <a href="/cities/" class="footer__nav-link">Cities</a>
+            <a href="/food/" class="footer__nav-link">Food</a>
+            <a href="/culture/" class="footer__nav-link">Culture</a>
+          </div>
 
-        <div>
-          <h4 class="footer__heading">Themes</h4>
-          <ul class="footer__links">
-            <li><a href="/war-and-healing/">War & Healing</a></li>
-            <li><a href="/daily-life/">Daily Life</a></li>
-            <li><a href="/youth/">Modern Vietnam</a></li>
-            <li><a href="/stories/">Stories</a></li>
-          </ul>
-        </div>
+          <div class="footer__nav-group">
+            <h4 class="footer__nav-title">Discover</h4>
+            <a href="/people/" class="footer__nav-link">People</a>
+            <a href="/war-and-healing/" class="footer__nav-link">War & Healing</a>
+            <a href="/daily-life/" class="footer__nav-link">Daily Life</a>
+            <a href="/stories/" class="footer__nav-link">Stories</a>
+          </div>
 
-        <div>
-          <h4 class="footer__heading">About</h4>
-          <ul class="footer__links">
-            <li><a href="/about/">About This Project</a></li>
-            <li><a href="/about/sources/">Our Sources</a></li>
-            <li><a href="/contact/">Contact</a></li>
-          </ul>
-        </div>
+          <div class="footer__nav-group">
+            <h4 class="footer__nav-title">About</h4>
+            <a href="/about/" class="footer__nav-link">Our Mission</a>
+            <a href="/about/sources/" class="footer__nav-link">Sources</a>
+            <a href="/contact/" class="footer__nav-link">Contact</a>
+          </div>
+        </nav>
       </div>
 
       <div class="footer__bottom">
-        <p class="footer__copyright">&copy; 2025 ThisIsVietnam.com. All rights reserved.</p>
+        <p class="footer__copyright">© 2025 ThisIsVietnam. All rights reserved.</p>
         <div class="footer__legal">
-          <a href="/legal/privacy/">Privacy Policy</a>
-          <a href="/legal/terms/">Terms of Use</a>
+          <a href="/legal/privacy/">Privacy</a>
+          <a href="/legal/terms/">Terms</a>
         </div>
       </div>
     </div>
