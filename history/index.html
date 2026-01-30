@@ -18,16 +18,16 @@
   <meta property="og:url" content="https://thisisvietnam.com/history/">
   <meta property="og:title" content="Vietnamese History - 4,000 Years of Civilization & Resistance">
   <meta property="og:description" content="From legendary kings to modern nation—the complete history of Vietnam.">
-  <meta property="og:image" content="https://thisisvietnam.com/images/history/og-image.jpg">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1557750255-c76072a7aad1?w=1200&h=630&fit=crop">
 
   <!-- Favicon & Theme -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <meta name="theme-color" content="#DA251D">
+  <meta name="theme-color" content="#0a0a0a">
 
-  <!-- Fonts -->
+  <!-- Fonts - Cinematic Edition -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <!-- Styles -->
   <link rel="stylesheet" href="/css/style.css">
@@ -46,165 +46,279 @@
     }
   }
   </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How old is Vietnamese civilization?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Vietnamese civilization traces back approximately 4,000 years to the legendary Hùng Kings and the Văn Lang kingdom. Archaeological evidence confirms sophisticated Bronze Age culture (Đông Sơn) dating to around 1000 BCE."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long was Vietnam under Chinese rule?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Vietnam was under direct Chinese rule for approximately 1,000 years (111 BCE to 938 CE), though this period included numerous rebellions and brief periods of independence."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why do Vietnamese and Americans have different names for the war?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Americans call it 'the Vietnam War' because Vietnam was where Americans fought. Vietnamese call it 'the American War' because America was the enemy they fought. This naming reflects a fundamental difference in perspective."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
+  <!-- Loading Screen -->
+  <div class="loader" aria-hidden="true">
+    <div class="loader__content">
+      <div class="loader__logo">Lịch Sử</div>
+      <div class="loader__bar">
+        <div class="loader__progress"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" aria-hidden="true"></div>
+
   <a href="#main" class="sr-only">Skip to main content</a>
+
+  <!-- Navigation Overlay -->
+  <div class="nav-overlay" aria-hidden="true">
+    <nav class="nav-overlay__content">
+      <ul class="nav-overlay__list">
+        <li class="nav-overlay__item"><a href="/" class="nav-overlay__link">Home</a></li>
+        <li class="nav-overlay__item"><a href="/history/" class="nav-overlay__link nav-overlay__link--active">History</a></li>
+        <li class="nav-overlay__item"><a href="/cities/" class="nav-overlay__link">Cities</a></li>
+        <li class="nav-overlay__item"><a href="/food/" class="nav-overlay__link">Food</a></li>
+        <li class="nav-overlay__item"><a href="/culture/" class="nav-overlay__link">Culture</a></li>
+        <li class="nav-overlay__item"><a href="/people/" class="nav-overlay__link">People</a></li>
+        <li class="nav-overlay__item"><a href="/war-and-healing/" class="nav-overlay__link">War & Healing</a></li>
+        <li class="nav-overlay__item"><a href="/stories/" class="nav-overlay__link">Stories</a></li>
+      </ul>
+    </nav>
+  </div>
 
   <!-- Header -->
   <header class="header" role="banner">
     <div class="header__inner">
-      <a href="/" class="logo" aria-label="ThisIsVietnam Home">
-        <span class="logo__mark">VN</span>
-        <span class="logo__text">ThisIsVietnam</span>
+      <a href="/" class="header__logo">
+        <span class="header__logo-icon">越</span>
+        <span class="header__logo-text">ThisIsVietnam</span>
       </a>
 
-      <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle navigation">
-        <span class="nav-toggle__bar"></span>
-        <span class="nav-toggle__bar"></span>
-        <span class="nav-toggle__bar"></span>
-      </button>
-
-      <nav class="nav" id="main-nav" aria-hidden="true" aria-label="Main navigation">
-        <ul class="nav__list">
-          <li><a href="/history/" class="nav__link nav__link--active">History</a></li>
-          <li><a href="/cities/" class="nav__link">Cities</a></li>
-          <li><a href="/food/" class="nav__link">Food</a></li>
-          <li><a href="/culture/" class="nav__link">Culture</a></li>
-          <li><a href="/people/" class="nav__link">People</a></li>
-          <li><a href="/war-and-healing/" class="nav__link">War & Healing</a></li>
-          <li><a href="/stories/" class="nav__link">Stories</a></li>
-        </ul>
-        <div class="lang-selector">
-          <button class="lang-selector__btn lang-selector__btn--active" data-lang="en">EN</button>
-          <button class="lang-selector__btn" data-lang="vi">VI</button>
-        </div>
+      <nav class="header__nav" aria-label="Main navigation">
+        <a href="/history/" class="header__nav-link header__nav-link--active">History</a>
+        <a href="/cities/" class="header__nav-link">Cities</a>
+        <a href="/food/" class="header__nav-link">Food</a>
+        <a href="/culture/" class="header__nav-link">Culture</a>
+        <a href="/stories/" class="header__nav-link">Stories</a>
       </nav>
+
+      <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="nav-toggle__line"></span>
+        <span class="nav-toggle__line"></span>
+      </button>
     </div>
   </header>
 
   <!-- Main Content -->
   <main id="main" role="main">
-    <!-- Hero -->
-    <section class="hero" style="min-height: 70vh;">
-      <div class="hero__bg" aria-hidden="true"></div>
+    <!-- Hero Section -->
+    <section class="hero hero--full">
+      <div class="hero__bg">
+        <img src="https://images.unsplash.com/photo-1557750255-c76072a7aad1?w=1920&q=80"
+             alt="Ancient Vietnamese temple in mist"
+             class="hero__bg-image"
+             loading="eager">
+        <div class="hero__overlay"></div>
+      </div>
       <div class="hero__content">
-        <span class="hero__tagline">4,000 Years</span>
-        <h1 class="hero__title">
-          A History of
-          <span class="hero__title-accent">Resistance</span>
+        <span class="hero__overline" data-reveal="up">4,000 Years</span>
+        <h1 class="hero__title" data-reveal="up">
+          A History of<br>
+          <em>Resistance</em>
         </h1>
-        <p class="hero__subtitle">
+        <p class="hero__subtitle" data-reveal="up">
           Vietnam has never been easy to conquer. Chinese, Mongol, French, Japanese, American—all tried. All eventually left. This is the story of a nation that refuses to disappear.
         </p>
+        <div class="hero__scroll" data-reveal="fade">
+          <span>Explore</span>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 5v14M5 12l7 7 7-7"/>
+          </svg>
+        </div>
       </div>
     </section>
 
-    <!-- Timeline Introduction -->
-    <section class="section">
+    <!-- Opening Statement -->
+    <section class="section section--dark">
       <div class="container container--narrow">
-        <div class="prose" style="text-align: center;">
-          <p class="lead" style="font-size: var(--text-xl); color: var(--color-gray-600);">
-            Vietnamese history is not a sequence of events—it is a continuous act of survival. Every era brought a new threat, and every era produced Vietnamese who refused to surrender their identity. Understanding this history is understanding why Vietnam is the way it is.
+        <div class="text-block text-block--center" data-reveal="up">
+          <p class="text-block__large">
+            Vietnamese history is not a sequence of events—it is a continuous act of survival.
+          </p>
+          <p class="text-block__body">
+            Every era brought a new threat, and every era produced Vietnamese who refused to surrender their identity. Understanding this history is understanding why Vietnam is the way it is.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Eras Section -->
-    <section class="section section--cream">
-      <div class="container">
-        <div class="section__header">
-          <span class="section__overline">Timeline</span>
-          <h2 class="section__title">Historical Eras</h2>
-        </div>
+    <!-- Image Break: Ancient Vietnam -->
+    <section class="image-break">
+      <img src="https://images.unsplash.com/photo-1528127269322-539801943592?w=1920&q=80"
+           alt="Ha Long Bay limestone karsts at sunrise"
+           loading="lazy">
+    </section>
 
-        <div class="card-grid card-grid--2col">
+    <!-- Historical Eras Timeline -->
+    <section class="section section--dark">
+      <div class="container">
+        <header class="section-header" data-reveal="up">
+          <span class="section-header__overline">Timeline</span>
+          <h2 class="section-header__title">Historical Eras</h2>
+          <p class="section-header__desc">
+            From mythical origins to modern nation—the ages that shaped Vietnam.
+          </p>
+        </header>
+
+        <div class="timeline">
           <!-- Legendary Period -->
-          <article class="card" data-animate>
-            <div class="card__content">
-              <span class="card__category" style="color: var(--color-gold-muted);">2879 BCE – 258 BCE</span>
-              <h3 class="card__title"><a href="/history/legendary-period/">The Legendary Period</a></h3>
-              <p class="card__excerpt">
+          <article class="timeline-card" data-reveal="up">
+            <div class="timeline-card__image">
+              <img src="https://images.unsplash.com/photo-1573503700284-86f4ec3679f0?w=800&q=80"
+                   alt="Ancient Vietnamese bronze drum"
+                   loading="lazy">
+            </div>
+            <div class="timeline-card__content">
+              <span class="timeline-card__date">2879 BCE – 258 BCE</span>
+              <h3 class="timeline-card__title">The Legendary Period</h3>
+              <p class="timeline-card__desc">
                 The Hùng Kings, the Dragon and the Fairy, and the origins of Vietnamese identity. Myth and history intertwined—the stories that Vietnamese children learn first, and carry forever.
               </p>
-              <div class="card__meta">
+              <div class="timeline-card__tags">
                 <span>Văn Lang Kingdom</span>
                 <span>Origin Myths</span>
+                <span>Bronze Age</span>
               </div>
             </div>
           </article>
 
           <!-- Chinese Domination -->
-          <article class="card" data-animate>
-            <div class="card__content">
-              <span class="card__category" style="color: var(--color-primary);">111 BCE – 938 CE</span>
-              <h3 class="card__title"><a href="/history/chinese-domination/">1,000 Years of Chinese Rule</a></h3>
-              <p class="card__excerpt">
+          <article class="timeline-card" data-reveal="up">
+            <div class="timeline-card__image">
+              <img src="https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80"
+                   alt="Ancient Vietnamese architecture"
+                   loading="lazy">
+            </div>
+            <div class="timeline-card__content">
+              <span class="timeline-card__date">111 BCE – 938 CE</span>
+              <h3 class="timeline-card__title">1,000 Years of Chinese Rule</h3>
+              <p class="timeline-card__desc">
                 A millennium under Chinese control—and a millennium of Vietnamese resistance. The Trưng Sisters, Lý Bí, and the heroes who kept Vietnamese identity alive under occupation.
               </p>
-              <div class="card__meta">
+              <div class="timeline-card__tags">
                 <span>Resistance Heroes</span>
                 <span>Cultural Survival</span>
+                <span>Identity Forged</span>
               </div>
             </div>
           </article>
 
-          <!-- Independence -->
-          <article class="card" data-animate>
-            <div class="card__content">
-              <span class="card__category" style="color: var(--color-jade);">938 – 1858</span>
-              <h3 class="card__title"><a href="/history/independence-era/">The Independent Kingdoms</a></h3>
-              <p class="card__excerpt">
+          <!-- Independence Era -->
+          <article class="timeline-card" data-reveal="up">
+            <div class="timeline-card__image">
+              <img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=800&q=80"
+                   alt="Imperial Citadel of Thang Long"
+                   loading="lazy">
+            </div>
+            <div class="timeline-card__content">
+              <span class="timeline-card__date">938 – 1858</span>
+              <h3 class="timeline-card__title">The Independent Kingdoms</h3>
+              <p class="timeline-card__desc">
                 Nine centuries of Vietnamese dynasties—Lý, Trần, Lê, Nguyễn. The rise of Thăng Long (Hanoi), defeating the Mongols three times, expanding southward, and building Vietnamese civilization.
               </p>
-              <div class="card__meta">
+              <div class="timeline-card__tags">
                 <span>Dynastic Glory</span>
-                <span>Southward Expansion</span>
+                <span>Mongol Defeats</span>
+                <span>Nam Tiến</span>
               </div>
             </div>
           </article>
 
           <!-- French Colonial -->
-          <article class="card" data-animate>
-            <div class="card__content">
-              <span class="card__category" style="color: var(--color-water);">1858 – 1954</span>
-              <h3 class="card__title"><a href="/history/french-colonial/">French Indochina</a></h3>
-              <p class="card__excerpt">
+          <article class="timeline-card" data-reveal="up">
+            <div class="timeline-card__image">
+              <img src="https://images.unsplash.com/photo-1555921015-5532091f6026?w=800&q=80"
+                   alt="French colonial architecture in Saigon"
+                   loading="lazy">
+            </div>
+            <div class="timeline-card__content">
+              <span class="timeline-card__date">1858 – 1954</span>
+              <h3 class="timeline-card__title">French Indochina</h3>
+              <p class="timeline-card__desc">
                 Colonization, exploitation, and resistance. The birth of Vietnamese nationalism, Ho Chi Minh's journey, and the war that ended French rule at Điện Biên Phủ.
               </p>
-              <div class="card__meta">
+              <div class="timeline-card__tags">
                 <span>Colonial Struggle</span>
-                <span>Independence Movement</span>
+                <span>Nationalism Born</span>
+                <span>Điện Biên Phủ</span>
               </div>
             </div>
           </article>
 
           <!-- American War -->
-          <article class="card" data-animate>
-            <div class="card__content">
-              <span class="card__category" style="color: var(--color-primary);">1955 – 1975</span>
-              <h3 class="card__title"><a href="/history/american-war/">The American War</a></h3>
-              <p class="card__excerpt">
+          <article class="timeline-card" data-reveal="up">
+            <div class="timeline-card__image">
+              <img src="https://images.unsplash.com/photo-1564596823821-79b97151055e?w=800&q=80"
+                   alt="Cu Chi tunnels historical site"
+                   loading="lazy">
+            </div>
+            <div class="timeline-card__content">
+              <span class="timeline-card__date">1955 – 1975</span>
+              <h3 class="timeline-card__title">The American War</h3>
+              <p class="timeline-card__desc">
                 What Americans call "Vietnam" and Vietnamese call "the American War." Division, devastation, Agent Orange, and the resilience that outlasted the world's greatest military power.
               </p>
-              <div class="card__meta">
+              <div class="timeline-card__tags">
                 <span>Multiple Perspectives</span>
                 <span>Lasting Wounds</span>
+                <span>Reunification</span>
               </div>
             </div>
           </article>
 
           <!-- Modern Vietnam -->
-          <article class="card" data-animate>
-            <div class="card__content">
-              <span class="card__category" style="color: var(--color-jade);">1975 – Present</span>
-              <h3 class="card__title"><a href="/history/modern-vietnam/">Modern Vietnam</a></h3>
-              <p class="card__excerpt">
+          <article class="timeline-card" data-reveal="up">
+            <div class="timeline-card__image">
+              <img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=800&q=80"
+                   alt="Modern Ho Chi Minh City skyline"
+                   loading="lazy">
+            </div>
+            <div class="timeline-card__content">
+              <span class="timeline-card__date">1975 – Present</span>
+              <h3 class="timeline-card__title">Modern Vietnam</h3>
+              <p class="timeline-card__desc">
                 Reunification, isolation, Đổi Mới economic reforms, and Vietnam's rise as a regional power. From war-torn nation to one of Asia's fastest-growing economies.
               </p>
-              <div class="card__meta">
+              <div class="timeline-card__tags">
+                <span>Đổi Mới</span>
                 <span>Economic Rise</span>
-                <span>Global Integration</span>
+                <span>Global Power</span>
               </div>
             </div>
           </article>
@@ -212,44 +326,89 @@
       </div>
     </section>
 
-    <!-- Key Figures -->
-    <section class="section">
+    <!-- Image Break: Temple -->
+    <section class="image-break">
+      <img src="https://images.unsplash.com/photo-1555921015-5532091f6026?w=1920&q=80"
+           alt="Temple of Literature in Hanoi"
+           loading="lazy">
+    </section>
+
+    <!-- Key Figures Section -->
+    <section class="section section--dark">
       <div class="container">
-        <div class="section__header">
-          <span class="section__overline">Heroes</span>
-          <h2 class="section__title">Figures Who Shaped Vietnam</h2>
-          <p class="section__desc">
+        <header class="section-header" data-reveal="up">
+          <span class="section-header__overline">Heroes</span>
+          <h2 class="section-header__title">Figures Who Shaped Vietnam</h2>
+          <p class="section-header__desc">
             From warrior queens to revolutionary leaders—the people Vietnamese remember.
           </p>
-        </div>
+        </header>
 
-        <div class="card-grid">
-          <article class="card" data-animate>
-            <div class="card__content">
-              <span class="card__category">40 CE</span>
-              <h3 class="card__title"><a href="/people/trung-sisters/">The Trưng Sisters</a></h3>
-              <p class="card__excerpt">
+        <div class="hero-grid">
+          <!-- Trung Sisters -->
+          <article class="hero-card" data-reveal="up">
+            <div class="hero-card__image">
+              <img src="https://images.unsplash.com/photo-1552611052-33e04de081de?w=800&q=80"
+                   alt="Vietnamese warrior statue"
+                   loading="lazy">
+            </div>
+            <div class="hero-card__content">
+              <span class="hero-card__era">40 CE</span>
+              <h3 class="hero-card__name">The Trưng Sisters</h3>
+              <p class="hero-card__role">Warrior Queens</p>
+              <p class="hero-card__story">
                 Two sisters who led Vietnam's first major rebellion against Chinese rule. They became queens, ruled for three years, and chose death over surrender. National heroines still honored today.
               </p>
             </div>
           </article>
 
-          <article class="card" data-animate>
-            <div class="card__content">
-              <span class="card__category">1428</span>
-              <h3 class="card__title"><a href="/people/le-loi/">Emperor Lê Lợi</a></h3>
-              <p class="card__excerpt">
+          <!-- Le Loi -->
+          <article class="hero-card" data-reveal="up">
+            <div class="hero-card__image">
+              <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800&q=80"
+                   alt="Vietnamese temple architecture"
+                   loading="lazy">
+            </div>
+            <div class="hero-card__content">
+              <span class="hero-card__era">1428</span>
+              <h3 class="hero-card__name">Emperor Lê Lợi</h3>
+              <p class="hero-card__role">Liberation Hero</p>
+              <p class="hero-card__story">
                 The peasant leader who defeated the Ming Chinese occupation after ten years of guerrilla warfare. Founded the Lê Dynasty and became the model for Vietnamese resistance.
               </p>
             </div>
           </article>
 
-          <article class="card" data-animate>
-            <div class="card__content">
-              <span class="card__category">1890-1969</span>
-              <h3 class="card__title"><a href="/people/ho-chi-minh/">Hồ Chí Minh</a></h3>
-              <p class="card__excerpt">
+          <!-- Ho Chi Minh -->
+          <article class="hero-card" data-reveal="up">
+            <div class="hero-card__image">
+              <img src="https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?w=800&q=80"
+                   alt="Ho Chi Minh Mausoleum"
+                   loading="lazy">
+            </div>
+            <div class="hero-card__content">
+              <span class="hero-card__era">1890–1969</span>
+              <h3 class="hero-card__name">Hồ Chí Minh</h3>
+              <p class="hero-card__role">Founding Father</p>
+              <p class="hero-card__story">
                 "Uncle Ho"—revolutionary, poet, founding father. The man who declared Vietnamese independence, defeated the French, and became the symbol of Vietnamese nationalism worldwide.
+              </p>
+            </div>
+          </article>
+
+          <!-- Vo Nguyen Giap -->
+          <article class="hero-card" data-reveal="up">
+            <div class="hero-card__image">
+              <img src="https://images.unsplash.com/photo-1564596823821-79b97151055e?w=800&q=80"
+                   alt="Military museum in Vietnam"
+                   loading="lazy">
+            </div>
+            <div class="hero-card__content">
+              <span class="hero-card__era">1911–2013</span>
+              <h3 class="hero-card__name">Võ Nguyên Giáp</h3>
+              <p class="hero-card__role">Military Genius</p>
+              <p class="hero-card__story">
+                The self-taught general who defeated France at Điện Biên Phủ and commanded forces throughout the American War. Considered one of the greatest military strategists of the 20th century.
               </p>
             </div>
           </article>
@@ -257,129 +416,275 @@
       </div>
     </section>
 
-    <!-- Quote -->
-    <section class="section section--dark">
+    <!-- Quote Section -->
+    <section class="section section--quote">
       <div class="container container--narrow">
-        <blockquote class="quote-block" style="background: transparent; border-left-color: var(--color-gold);" data-animate>
-          <span class="quote-block__icon" style="color: var(--color-gold);">"</span>
-          <p class="quote-block__text" style="color: var(--color-white);">
+        <blockquote class="quote-large" data-reveal="up">
+          <span class="quote-large__mark">"</span>
+          <p class="quote-large__text">
             Nothing is more precious than independence and freedom.
           </p>
-          <cite class="quote-block__author" style="color: var(--color-gold-muted);">— Hồ Chí Minh</cite>
+          <footer class="quote-large__footer">
+            <cite>— Hồ Chí Minh</cite>
+          </footer>
         </blockquote>
       </div>
     </section>
 
+    <!-- Image Break: War History -->
+    <section class="image-break">
+      <img src="https://images.unsplash.com/photo-1562711844-f8aac83d3b3b?w=1920&q=80"
+           alt="War Remnants Museum in Ho Chi Minh City"
+           loading="lazy">
+    </section>
+
     <!-- Understanding History -->
-    <section class="section">
-      <div class="container container--narrow">
-        <div class="prose">
-          <h2>Why This History Matters</h2>
-
-          <p>
-            You cannot understand modern Vietnam without understanding its history. The Vietnamese obsession with education comes from Confucian tradition. The suspicion of foreign powers comes from a thousand years of Chinese rule and a century of European colonization. The resilience comes from surviving every invasion. The complexity of Vietnamese-American relations comes from a war that killed millions.
-          </p>
-
-          <p>
-            Vietnamese history is taught differently in Vietnam than in the West. What Americans call "the Vietnam War," Vietnamese call "the American War"—one chapter in a much longer story of resistance. The perspectives don't align, and that's important to understand.
-          </p>
-
-          <p>
-            This site presents Vietnamese history with respect for multiple truths. We use Vietnamese sources alongside Western ones. We center Vietnamese voices. We acknowledge that history is always contested, and that the victors don't always get to write the final version.
-          </p>
+    <section class="section section--dark">
+      <div class="container">
+        <div class="split-content">
+          <div class="split-content__text" data-reveal="left">
+            <span class="section-header__overline">Context</span>
+            <h2 class="section-header__title">Why This History Matters</h2>
+            <p class="text-block__body">
+              You cannot understand modern Vietnam without understanding its history. The Vietnamese obsession with education comes from Confucian tradition. The suspicion of foreign powers comes from a thousand years of Chinese rule and a century of European colonization.
+            </p>
+            <p class="text-block__body">
+              Vietnamese history is taught differently in Vietnam than in the West. What Americans call "the Vietnam War," Vietnamese call "the American War"—one chapter in a much longer story of resistance.
+            </p>
+            <p class="text-block__body">
+              This site presents Vietnamese history with respect for multiple truths. We use Vietnamese sources alongside Western ones. We center Vietnamese voices. We acknowledge that history is always contested.
+            </p>
+          </div>
+          <div class="split-content__image" data-reveal="right">
+            <img src="https://images.unsplash.com/photo-1513415277900-a62401e19be4?w=800&q=80"
+                 alt="Students at the Temple of Literature"
+                 loading="lazy">
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- FAQ -->
-    <section class="section section--cream">
-      <div class="container">
-        <div class="section__header">
-          <h2 class="section__title">History Questions</h2>
-        </div>
+    <!-- Horizontal Scroll: Historical Sites -->
+    <section class="section section--dark horizontal-scroll">
+      <header class="section-header" data-reveal="up">
+        <span class="section-header__overline">Explore</span>
+        <h2 class="section-header__title">Historical Sites</h2>
+      </header>
 
-        <div class="faq">
-          <details class="faq__item">
-            <summary class="faq__question">
+      <div class="horizontal-scroll__track">
+        <article class="story-card">
+          <div class="story-card__image">
+            <img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=600&q=80"
+                 alt="Imperial Citadel" loading="lazy">
+          </div>
+          <div class="story-card__content">
+            <span class="story-card__time">Hanoi</span>
+            <h3 class="story-card__title">Imperial Citadel</h3>
+            <p class="story-card__desc">UNESCO World Heritage Site. Center of Vietnamese power for centuries.</p>
+          </div>
+        </article>
+
+        <article class="story-card">
+          <div class="story-card__image">
+            <img src="https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=600&q=80"
+                 alt="Hue Imperial City" loading="lazy">
+          </div>
+          <div class="story-card__content">
+            <span class="story-card__time">Huế</span>
+            <h3 class="story-card__title">Imperial City</h3>
+            <p class="story-card__desc">Nguyen Dynasty capital. Forbidden Purple City within walls.</p>
+          </div>
+        </article>
+
+        <article class="story-card">
+          <div class="story-card__image">
+            <img src="https://images.unsplash.com/photo-1564596823821-79b97151055e?w=600&q=80"
+                 alt="Cu Chi Tunnels" loading="lazy">
+          </div>
+          <div class="story-card__content">
+            <span class="story-card__time">Cu Chi</span>
+            <h3 class="story-card__title">Cu Chi Tunnels</h3>
+            <p class="story-card__desc">250km underground network. Symbol of Vietnamese resistance.</p>
+          </div>
+        </article>
+
+        <article class="story-card">
+          <div class="story-card__image">
+            <img src="https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?w=600&q=80"
+                 alt="Ho Chi Minh Mausoleum" loading="lazy">
+          </div>
+          <div class="story-card__content">
+            <span class="story-card__time">Hanoi</span>
+            <h3 class="story-card__title">HCM Mausoleum</h3>
+            <p class="story-card__desc">Final resting place of Uncle Ho. National pilgrimage site.</p>
+          </div>
+        </article>
+
+        <article class="story-card">
+          <div class="story-card__image">
+            <img src="https://images.unsplash.com/photo-1562711844-f8aac83d3b3b?w=600&q=80"
+                 alt="War Remnants Museum" loading="lazy">
+          </div>
+          <div class="story-card__content">
+            <span class="story-card__time">Saigon</span>
+            <h3 class="story-card__title">War Remnants Museum</h3>
+            <p class="story-card__desc">Unflinching look at war's impact. Essential for understanding.</p>
+          </div>
+        </article>
+
+        <article class="story-card">
+          <div class="story-card__image">
+            <img src="https://images.unsplash.com/photo-1509030450996-dd1a26dda07a?w=600&q=80"
+                 alt="My Son Sanctuary" loading="lazy">
+          </div>
+          <div class="story-card__content">
+            <span class="story-card__time">Quảng Nam</span>
+            <h3 class="story-card__title">Mỹ Sơn Sanctuary</h3>
+            <p class="story-card__desc">Ancient Cham ruins. Hindu temple complex in the jungle.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section section--dark">
+      <div class="container">
+        <div class="stats-grid" data-reveal="up">
+          <div class="stat-item">
+            <span class="stat-item__number" data-counter="4000" data-suffix="+">0</span>
+            <span class="stat-item__label">Years of History</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-item__number" data-counter="1000">0</span>
+            <span class="stat-item__label">Years Under Chinese Rule</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-item__number" data-counter="100">0</span>
+            <span class="stat-item__label">Years of French Colonization</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-item__number" data-counter="8">0</span>
+            <span class="stat-item__label">UNESCO World Heritage Sites</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section section--dark faq-section">
+      <div class="container container--narrow">
+        <header class="section-header" data-reveal="up">
+          <h2 class="section-header__title">History Questions</h2>
+        </header>
+
+        <div class="accordion" data-reveal="up">
+          <details class="accordion__item">
+            <summary class="accordion__trigger">
               <span>How old is Vietnamese civilization?</span>
-              <span class="faq__icon">+</span>
+              <span class="accordion__icon"></span>
             </summary>
-            <div class="faq__answer">
+            <div class="accordion__content">
               <p>Vietnamese civilization traces back approximately 4,000 years to the legendary Hùng Kings and the Văn Lang kingdom. Archaeological evidence confirms sophisticated Bronze Age culture (Đông Sơn) dating to around 1000 BCE. Continuous recorded history begins around 200 BCE, making Vietnam one of the oldest continuous civilizations in Southeast Asia.</p>
             </div>
           </details>
 
-          <details class="faq__item">
-            <summary class="faq__question">
+          <details class="accordion__item">
+            <summary class="accordion__trigger">
               <span>How long was Vietnam under Chinese rule?</span>
-              <span class="faq__icon">+</span>
+              <span class="accordion__icon"></span>
             </summary>
-            <div class="faq__answer">
+            <div class="accordion__content">
               <p>Vietnam was under direct Chinese rule for approximately 1,000 years (111 BCE to 938 CE), though this period included numerous rebellions and brief periods of independence. This era profoundly influenced Vietnamese culture, language, and political systems, while also forging the fierce independence that defines Vietnamese national identity.</p>
             </div>
           </details>
 
-          <details class="faq__item">
-            <summary class="faq__question">
+          <details class="accordion__item">
+            <summary class="accordion__trigger">
               <span>Why do Vietnamese and Americans have different names for the war?</span>
-              <span class="faq__icon">+</span>
+              <span class="accordion__icon"></span>
             </summary>
-            <div class="faq__answer">
+            <div class="accordion__content">
               <p>Americans call it "the Vietnam War" because Vietnam was where Americans fought. Vietnamese call it "the American War" (Chiến tranh chống Mỹ) because America was the enemy they fought. This naming reflects a fundamental difference in perspective: for Americans, it was one war in a foreign land; for Vietnamese, it was one chapter in centuries of fighting foreign powers on their own soil.</p>
             </div>
           </details>
+
+          <details class="accordion__item">
+            <summary class="accordion__trigger">
+              <span>What was Đổi Mới and why does it matter?</span>
+              <span class="accordion__icon"></span>
+            </summary>
+            <div class="accordion__content">
+              <p>Đổi Mới ("Renovation") was a series of economic reforms launched in 1986 that transformed Vietnam from a centrally planned economy to a "socialist-oriented market economy." These reforms opened Vietnam to foreign investment, privatized many industries, and sparked decades of rapid economic growth. Đổi Mới explains modern Vietnam's paradox: communist government with capitalist economy.</p>
+            </div>
+          </details>
+
+          <details class="accordion__item">
+            <summary class="accordion__trigger">
+              <span>Who were the Trưng Sisters and why are they important?</span>
+              <span class="accordion__icon"></span>
+            </summary>
+            <div class="accordion__content">
+              <p>Trưng Trắc and Trưng Nhị were two sisters who led Vietnam's first major uprising against Chinese rule in 40 CE. After a Chinese commander killed Trưng Trắc's husband, the sisters raised an army, expelled the Chinese, and ruled as queens for three years. When the Chinese returned with a larger army, they chose suicide over surrender. They remain Vietnam's most revered national heroines, celebrated every year on the anniversary of their rebellion.</p>
+            </div>
+          </details>
         </div>
+      </div>
+    </section>
+
+    <!-- Final Image -->
+    <section class="image-break image-break--final">
+      <img src="https://images.unsplash.com/photo-1555921015-5532091f6026?w=1920&q=80"
+           alt="Vietnamese flag at sunrise"
+           loading="lazy">
+      <div class="image-break__caption" data-reveal="up">
+        <p>A nation forged in resistance, defined by resilience</p>
       </div>
     </section>
   </main>
 
   <!-- Footer -->
-  <footer class="footer" role="contentinfo">
+  <footer class="footer">
     <div class="container">
       <div class="footer__grid">
         <div class="footer__brand">
-          <div class="footer__logo">ThisIsVietnam</div>
-          <p class="footer__desc">
-            A living cultural knowledge system. Vietnam as it is—not explained, experienced.
-          </p>
+          <a href="/" class="footer__logo">
+            <span class="footer__logo-icon">越</span>
+            <span class="footer__logo-text">ThisIsVietnam</span>
+          </a>
+          <p class="footer__tagline">Vietnam as it is—not explained, experienced.</p>
         </div>
 
-        <div>
-          <h4 class="footer__heading">Explore</h4>
-          <ul class="footer__links">
-            <li><a href="/history/">History</a></li>
-            <li><a href="/cities/">Cities & Regions</a></li>
-            <li><a href="/food/">Food & Cuisine</a></li>
-            <li><a href="/culture/">Culture</a></li>
-            <li><a href="/people/">People</a></li>
-          </ul>
-        </div>
+        <nav class="footer__nav">
+          <div class="footer__nav-group">
+            <h4 class="footer__nav-title">Explore</h4>
+            <a href="/history/" class="footer__nav-link">History</a>
+            <a href="/cities/" class="footer__nav-link">Cities</a>
+            <a href="/food/" class="footer__nav-link">Food</a>
+            <a href="/culture/" class="footer__nav-link">Culture</a>
+          </div>
 
-        <div>
-          <h4 class="footer__heading">Themes</h4>
-          <ul class="footer__links">
-            <li><a href="/war-and-healing/">War & Healing</a></li>
-            <li><a href="/daily-life/">Daily Life</a></li>
-            <li><a href="/youth/">Modern Vietnam</a></li>
-            <li><a href="/stories/">Stories</a></li>
-          </ul>
-        </div>
+          <div class="footer__nav-group">
+            <h4 class="footer__nav-title">Discover</h4>
+            <a href="/people/" class="footer__nav-link">People</a>
+            <a href="/war-and-healing/" class="footer__nav-link">War & Healing</a>
+            <a href="/daily-life/" class="footer__nav-link">Daily Life</a>
+            <a href="/stories/" class="footer__nav-link">Stories</a>
+          </div>
 
-        <div>
-          <h4 class="footer__heading">About</h4>
-          <ul class="footer__links">
-            <li><a href="/about/">About This Project</a></li>
-            <li><a href="/about/sources/">Our Sources</a></li>
-            <li><a href="/contact/">Contact</a></li>
-          </ul>
-        </div>
+          <div class="footer__nav-group">
+            <h4 class="footer__nav-title">About</h4>
+            <a href="/about/" class="footer__nav-link">Our Mission</a>
+            <a href="/about/sources/" class="footer__nav-link">Sources</a>
+            <a href="/contact/" class="footer__nav-link">Contact</a>
+          </div>
+        </nav>
       </div>
 
       <div class="footer__bottom">
-        <p class="footer__copyright">&copy; 2025 ThisIsVietnam.com. All rights reserved.</p>
+        <p class="footer__copyright">© 2025 ThisIsVietnam. All rights reserved.</p>
         <div class="footer__legal">
-          <a href="/legal/privacy/">Privacy Policy</a>
-          <a href="/legal/terms/">Terms of Use</a>
+          <a href="/legal/privacy/">Privacy</a>
+          <a href="/legal/terms/">Terms</a>
         </div>
       </div>
     </div>

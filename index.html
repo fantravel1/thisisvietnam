@@ -16,11 +16,12 @@
   <meta property="og:url" content="https://thisisvietnam.com/">
   <meta property="og:title" content="ThisIsVietnam - Vietnam As It Is">
   <meta property="og:description" content="Deep cultural exploration of Vietnam. History, food, people, war, healing, and daily life.">
-  <meta property="og:image" content="https://thisisvietnam.com/images/og-image.jpg">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=1200&q=80">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:title" content="ThisIsVietnam - Vietnam As It Is">
+  <meta property="twitter:image" content="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=1200&q=80">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -75,6 +76,55 @@
     ]
   }
   </script>
+
+  <style>
+    /* Hero background image */
+    .hero__bg-image {
+      position: absolute;
+      inset: 0;
+      z-index: -3;
+    }
+    .hero__bg-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.5;
+    }
+    /* Card images */
+    .card__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .card:hover .card__image {
+      transform: scale(1.1);
+    }
+    /* Split image */
+    .split__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    /* Parallax image section */
+    .image-break {
+      position: relative;
+      height: 60vh;
+      overflow: hidden;
+    }
+    .image-break__img {
+      position: absolute;
+      inset: -10%;
+      width: 120%;
+      height: 120%;
+      object-fit: cover;
+    }
+    .image-break__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, var(--black) 0%, transparent 30%, transparent 70%, var(--black) 100%);
+    }
+  </style>
 </head>
 <body>
   <!-- Loading Screen -->
@@ -130,9 +180,12 @@
   </div>
 
   <main>
-    <!-- Hero Section -->
+    <!-- Hero Section with Ha Long Bay -->
     <section class="hero">
       <div class="hero__bg">
+        <div class="hero__bg-image">
+          <img src="https://images.unsplash.com/photo-1528127269322-539801943592?w=1920&q=80" alt="Ha Long Bay Vietnam at sunrise with limestone karsts" loading="eager">
+        </div>
         <div class="hero__bg-gradient"></div>
         <div class="hero__bg-noise"></div>
       </div>
@@ -191,14 +244,12 @@
       </div>
     </div>
 
-    <!-- Introduction Split Section -->
+    <!-- Introduction Split Section with Rice Farmer -->
     <section class="section" id="explore">
       <div class="container">
         <div class="split">
           <div class="split__visual" data-reveal="left">
-            <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%); display: flex; align-items: center; justify-content: center;">
-              <span style="font-family: var(--font-display); font-size: var(--text-4xl); color: var(--gold); opacity: 0.3;">VN</span>
-            </div>
+            <img src="https://images.unsplash.com/photo-1555921015-5532091f6026?w=800&q=80" alt="Vietnamese woman in traditional conical hat in rice field" class="split__img" loading="lazy">
             <div class="split__image-overlay"></div>
           </div>
 
@@ -243,6 +294,12 @@
       </div>
     </section>
 
+    <!-- Image Break - Terraced Rice Fields -->
+    <div class="image-break">
+      <img src="https://images.unsplash.com/photo-1509030450996-dd1a26dda07a?w=1920&q=80" alt="Terraced rice fields in Sapa Vietnam with mountains" class="image-break__img" loading="lazy">
+      <div class="image-break__overlay"></div>
+    </div>
+
     <!-- Cities Section -->
     <section class="section">
       <div class="container">
@@ -258,7 +315,7 @@
           <!-- Hanoi -->
           <article class="card card--city" data-reveal="up" data-delay="1">
             <div class="card__image-wrap">
-              <div style="width: 100%; height: 100%; background: linear-gradient(180deg, #2d9a6e 0%, #1a1a1a 100%);"></div>
+              <img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=600&q=80" alt="Hanoi Old Quarter street scene with motorbikes and colonial architecture" class="card__image" loading="lazy">
               <div class="card__image-overlay"></div>
             </div>
             <div class="card__content">
@@ -271,7 +328,7 @@
           <!-- Ho Chi Minh City -->
           <article class="card card--city" data-reveal="up" data-delay="2">
             <div class="card__image-wrap">
-              <div style="width: 100%; height: 100%; background: linear-gradient(180deg, #e63946 0%, #1a1a1a 100%);"></div>
+              <img src="https://images.unsplash.com/photo-1583687355032-c9b66ab91bcf?w=600&q=80" alt="Ho Chi Minh City skyline at night with Bitexco tower" class="card__image" loading="lazy">
               <div class="card__image-overlay"></div>
             </div>
             <div class="card__content">
@@ -284,7 +341,7 @@
           <!-- Hue -->
           <article class="card card--city" data-reveal="up" data-delay="3">
             <div class="card__image-wrap">
-              <div style="width: 100%; height: 100%; background: linear-gradient(180deg, #d4a853 0%, #1a1a1a 100%);"></div>
+              <img src="https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=600&q=80" alt="Imperial City of Hue with traditional Vietnamese architecture" class="card__image" loading="lazy">
               <div class="card__image-overlay"></div>
             </div>
             <div class="card__content">
@@ -297,7 +354,7 @@
           <!-- Hoi An -->
           <article class="card card--city" data-reveal="up" data-delay="4">
             <div class="card__image-wrap">
-              <div style="width: 100%; height: 100%; background: linear-gradient(180deg, #f0d78c 0%, #1a1a1a 100%);"></div>
+              <img src="https://images.unsplash.com/photo-1536697246787-1f7ae568d89a?w=600&q=80" alt="Hoi An ancient town at night with colorful lanterns" class="card__image" loading="lazy">
               <div class="card__image-overlay"></div>
             </div>
             <div class="card__content">
@@ -310,7 +367,7 @@
           <!-- Mekong -->
           <article class="card card--city" data-reveal="up" data-delay="5">
             <div class="card__image-wrap">
-              <div style="width: 100%; height: 100%; background: linear-gradient(180deg, #4a90a4 0%, #1a1a1a 100%);"></div>
+              <img src="https://images.unsplash.com/photo-1557750255-c76072a7aad1?w=600&q=80" alt="Mekong Delta floating market with boats full of fruits" class="card__image" loading="lazy">
               <div class="card__image-overlay"></div>
             </div>
             <div class="card__content">
@@ -335,6 +392,12 @@
       </div>
     </section>
 
+    <!-- Image Break - Street Food -->
+    <div class="image-break">
+      <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=1920&q=80" alt="Vietnamese street food vendor cooking pho at night" class="image-break__img" loading="lazy">
+      <div class="image-break__overlay"></div>
+    </div>
+
     <!-- Cultural Themes -->
     <section class="section">
       <div class="container">
@@ -349,6 +412,10 @@
         <div class="card-grid card-grid--2">
           <!-- History -->
           <article class="card" data-reveal="up" data-delay="1">
+            <div class="card__image-wrap">
+              <img src="https://images.unsplash.com/photo-1562593028-bba9cd795a89?w=600&q=80" alt="Temple of Literature in Hanoi Vietnam" class="card__image" loading="lazy">
+              <div class="card__image-overlay"></div>
+            </div>
             <div class="card__content">
               <span class="card__category">History</span>
               <h3 class="card__title"><a href="/history/">4,000 Years of Resistance</a></h3>
@@ -360,6 +427,10 @@
 
           <!-- Food -->
           <article class="card" data-reveal="up" data-delay="2">
+            <div class="card__image-wrap">
+              <img src="https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=600&q=80" alt="Bowl of Vietnamese pho with herbs and chopsticks" class="card__image" loading="lazy">
+              <div class="card__image-overlay"></div>
+            </div>
             <div class="card__content">
               <span class="card__category">Food</span>
               <h3 class="card__title"><a href="/food/">Food as Memory & Identity</a></h3>
@@ -371,6 +442,10 @@
 
           <!-- War -->
           <article class="card" data-reveal="up" data-delay="3">
+            <div class="card__image-wrap">
+              <img src="https://images.unsplash.com/photo-1564596823821-79b97151ff38?w=600&q=80" alt="Vietnam War Remnants Museum helicopter" class="card__image" loading="lazy">
+              <div class="card__image-overlay"></div>
+            </div>
             <div class="card__content">
               <span class="card__category">War & Healing</span>
               <h3 class="card__title"><a href="/war-and-healing/">Trauma, Truth & Resilience</a></h3>
@@ -382,6 +457,10 @@
 
           <!-- Daily Life -->
           <article class="card" data-reveal="up" data-delay="4">
+            <div class="card__image-wrap">
+              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Vietnamese coffee ca phe sua da with condensed milk" class="card__image" loading="lazy">
+              <div class="card__image-overlay"></div>
+            </div>
             <div class="card__content">
               <span class="card__category">Daily Life</span>
               <h3 class="card__title"><a href="/daily-life/">How Vietnamese Live</a></h3>
@@ -407,7 +486,8 @@
       <div class="horizontal-scroll__track">
         <article class="horizontal-scroll__item card">
           <div class="card__image-wrap">
-            <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #8B4513 0%, #1a1a1a 100%);"></div>
+            <img src="https://images.unsplash.com/photo-1576577445504-6af96477db52?w=600&q=80" alt="Steaming bowl of pho Vietnamese noodle soup" class="card__image" loading="lazy">
+            <div class="card__image-overlay"></div>
           </div>
           <div class="card__content">
             <span class="card__category">Cultural Essay</span>
@@ -418,7 +498,8 @@
 
         <article class="horizontal-scroll__item card">
           <div class="card__image-wrap">
-            <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #2d9a6e 0%, #1a1a1a 100%);"></div>
+            <img src="https://images.unsplash.com/photo-1571984405176-5958bd9ac31d?w=600&q=80" alt="Vietnamese woman in ao dai traditional dress" class="card__image" loading="lazy">
+            <div class="card__image-overlay"></div>
           </div>
           <div class="card__content">
             <span class="card__category">History</span>
@@ -429,7 +510,8 @@
 
         <article class="horizontal-scroll__item card">
           <div class="card__image-wrap">
-            <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #e63946 0%, #1a1a1a 100%);"></div>
+            <img src="https://images.unsplash.com/photo-1583687355032-c9b66ab91bcf?w=600&q=80" alt="Saigon Ho Chi Minh City nightlife and neon lights" class="card__image" loading="lazy">
+            <div class="card__image-overlay"></div>
           </div>
           <div class="card__content">
             <span class="card__category">Modern Vietnam</span>
@@ -440,7 +522,8 @@
 
         <article class="horizontal-scroll__item card">
           <div class="card__image-wrap">
-            <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #d4a853 0%, #1a1a1a 100%);"></div>
+            <img src="https://images.unsplash.com/photo-1555139617-0497b08e9935?w=600&q=80" alt="Vietnamese ancestor altar with incense and offerings" class="card__image" loading="lazy">
+            <div class="card__image-overlay"></div>
           </div>
           <div class="card__content">
             <span class="card__category">Culture</span>
@@ -448,8 +531,26 @@
             <p class="card__excerpt">How the dead remain present in Vietnamese life.</p>
           </div>
         </article>
+
+        <article class="horizontal-scroll__item card">
+          <div class="card__image-wrap">
+            <img src="https://images.unsplash.com/photo-1504457047772-27faf1c00561?w=600&q=80" alt="Vietnamese farmers in conical hats working rice paddy" class="card__image" loading="lazy">
+            <div class="card__image-overlay"></div>
+          </div>
+          <div class="card__content">
+            <span class="card__category">Daily Life</span>
+            <h3 class="card__title"><a href="/stories/rice-culture/">The Culture of Rice</a></h3>
+            <p class="card__excerpt">More than food—the foundation of Vietnamese civilization.</p>
+          </div>
+        </article>
       </div>
     </section>
+
+    <!-- Image Break - Motorbikes -->
+    <div class="image-break">
+      <img src="https://images.unsplash.com/photo-1557750255-c76072a7aad1?w=1920&q=80" alt="Sea of motorbikes on Vietnam street during rush hour" class="image-break__img" loading="lazy">
+      <div class="image-break__overlay"></div>
+    </div>
 
     <!-- FAQ Section -->
     <section class="section">
@@ -488,6 +589,16 @@
             </summary>
             <div class="accordion__content">
               <p>Food in Vietnam is identity itself. The greeting "Ăn cơm chưa?"—Have you eaten rice yet?—reveals how central food is to daily life. Each dish tells a story: phở emerged from colonial influence meeting northern traditions, bánh mì represents cultural fusion, and regional specialties carry centuries of local knowledge.</p>
+            </div>
+          </details>
+
+          <details class="accordion__item">
+            <summary class="accordion__trigger">
+              <span>What should I know before visiting Vietnam?</span>
+              <span class="accordion__icon"></span>
+            </summary>
+            <div class="accordion__content">
+              <p>Vietnam rewards curiosity and humility. Learn a few Vietnamese phrases—locals deeply appreciate the effort. Understand that "the Vietnam War" is called "the American War" here. Be prepared for sensory overload: the traffic, the heat, the noise are part of the experience. And eat everything—the best food is often on tiny plastic stools on the sidewalk.</p>
             </div>
           </details>
         </div>
