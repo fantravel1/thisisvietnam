@@ -128,11 +128,27 @@
 </head>
 <body>
   <!-- Loading Screen -->
-  <div class="loader">
-    <div class="loader__logo">ThisIsVietnam</div>
-    <div class="loader__bar">
-      <div class="loader__progress"></div>
+  <div class="loader" aria-hidden="true">
+    <div class="loader__content">
+      <div class="loader__logo">
+        <span class="text-gradient-animated">ThisIsVietnam</span>
+      </div>
+      <div class="loader__bar">
+        <div class="loader__progress"></div>
+      </div>
     </div>
+  </div>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Scroll Progress Circle -->
+  <div class="scroll-indicator" aria-hidden="true">
+    <svg viewBox="0 0 60 60" width="60" height="60">
+      <circle class="scroll-indicator__circle" cx="30" cy="30" r="25"/>
+      <circle class="scroll-indicator__progress" cx="30" cy="30" r="25"/>
+    </svg>
+    <span class="scroll-indicator__percent">0%</span>
   </div>
 
   <!-- Header -->
@@ -180,67 +196,90 @@
   </div>
 
   <main>
-    <!-- Hero Section with Ha Long Bay -->
-    <section class="hero">
+    <!-- Hero Section with Video Background -->
+    <section class="hero video-overlay vignette">
       <div class="hero__bg">
+        <!-- Video Background (with image fallback) -->
+        <video class="hero__bg-video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1528127269322-539801943592?w=1920&q=80">
+          <source src="https://player.vimeo.com/external/370331493.sd.mp4?s=e90dcaba73c19e0e36f03406b47bbd6992dd6c1c&profile_id=139&oauth2_token_id=57447761" type="video/mp4">
+        </video>
+        <!-- Fallback Image -->
         <div class="hero__bg-image">
           <img src="https://images.unsplash.com/photo-1528127269322-539801943592?w=1920&q=80" alt="Ha Long Bay Vietnam at sunrise with limestone karsts" loading="eager">
         </div>
         <div class="hero__bg-gradient"></div>
         <div class="hero__bg-noise"></div>
+
+        <!-- Morphing Blobs -->
+        <div class="blob-bg blob-bg--gold" style="top: 20%; left: 10%;"></div>
+        <div class="blob-bg blob-bg--red" style="bottom: 30%; right: 15%;"></div>
       </div>
 
       <div class="container">
         <div class="hero__content">
-          <p class="hero__overline overline">
+          <p class="hero__overline overline" data-reveal="up">
             <span>An Explosive Cultural Deep Dive</span>
           </p>
 
-          <h1 class="hero__title headline-hero">
+          <h1 class="hero__title headline-hero" data-reveal="up">
             <span class="hero__title-line">
-              <span class="hero__title-word">Vietnam</span>
+              <span class="hero__title-word glitch" data-text="Vietnam">Vietnam</span>
             </span>
             <span class="hero__title-line">
-              <span class="hero__title-word hero__title-accent">As It Is</span>
+              <span class="hero__title-word hero__title-accent text-gradient-animated">As It Is</span>
             </span>
           </h1>
 
-          <p class="hero__subtitle">
-            Not explained. Experienced. History, people, food, war, healing—told with truth and soul. This is not a travel guide. It's a living cultural knowledge system.
+          <p class="hero__subtitle" data-reveal="up">
+            Not explained. <em>Experienced.</em> History, people, food, war, healing—told with truth and soul. This is not a travel guide. It's a living cultural knowledge system.
           </p>
 
-          <div class="hero__cta">
-            <a href="/cities/hanoi/" class="btn btn--primary">
-              <span class="btn__text">Begin in Hanoi</span>
+          <div class="hero__cta" data-reveal="up">
+            <a href="/cities/hanoi/" class="btn-magnetic">
+              <span class="btn-magnetic__bg"></span>
+              <span class="btn-magnetic__text">Begin in Hanoi</span>
             </a>
             <a href="#explore" class="btn btn--outline">
-              <span class="btn__text">Explore</span>
+              <span class="btn__text">Explore Themes</span>
             </a>
           </div>
         </div>
       </div>
 
-      <div class="hero__scroll">
-        <span>Scroll</span>
-        <div class="hero__scroll-line"></div>
+      <!-- Animated Scroll Hint -->
+      <div class="scroll-hint">
+        <span>Scroll to explore</span>
+        <div class="scroll-hint__line"></div>
       </div>
     </section>
 
-    <!-- Marquee -->
-    <div class="marquee">
-      <div class="marquee__track">
-        <span class="marquee__item">History <span>•</span></span>
-        <span class="marquee__item">Culture <span>•</span></span>
-        <span class="marquee__item">Food <span>•</span></span>
-        <span class="marquee__item">People <span>•</span></span>
-        <span class="marquee__item">War & Healing <span>•</span></span>
-        <span class="marquee__item">Daily Life <span>•</span></span>
-        <span class="marquee__item">History <span>•</span></span>
-        <span class="marquee__item">Culture <span>•</span></span>
-        <span class="marquee__item">Food <span>•</span></span>
-        <span class="marquee__item">People <span>•</span></span>
-        <span class="marquee__item">War & Healing <span>•</span></span>
-        <span class="marquee__item">Daily Life <span>•</span></span>
+    <!-- Premium Marquee -->
+    <div class="marquee-premium">
+      <div class="marquee-premium__track">
+        <span class="marquee-premium__item">Lịch Sử</span>
+        <span class="marquee-premium__item">•</span>
+        <span class="marquee-premium__item">Văn Hóa</span>
+        <span class="marquee-premium__item">•</span>
+        <span class="marquee-premium__item">Ẩm Thực</span>
+        <span class="marquee-premium__item">•</span>
+        <span class="marquee-premium__item">Con Người</span>
+        <span class="marquee-premium__item">•</span>
+        <span class="marquee-premium__item">Chiến Tranh</span>
+        <span class="marquee-premium__item">•</span>
+        <span class="marquee-premium__item">Đời Sống</span>
+        <span class="marquee-premium__item">•</span>
+        <span class="marquee-premium__item">Lịch Sử</span>
+        <span class="marquee-premium__item">•</span>
+        <span class="marquee-premium__item">Văn Hóa</span>
+        <span class="marquee-premium__item">•</span>
+        <span class="marquee-premium__item">Ẩm Thực</span>
+        <span class="marquee-premium__item">•</span>
+        <span class="marquee-premium__item">Con Người</span>
+        <span class="marquee-premium__item">•</span>
+        <span class="marquee-premium__item">Chiến Tranh</span>
+        <span class="marquee-premium__item">•</span>
+        <span class="marquee-premium__item">Đời Sống</span>
+        <span class="marquee-premium__item">•</span>
       </div>
     </div>
 
@@ -248,47 +287,50 @@
     <section class="section" id="explore">
       <div class="container">
         <div class="split">
-          <div class="split__visual" data-reveal="left">
-            <img src="https://images.unsplash.com/photo-1555921015-5532091f6026?w=800&q=80" alt="Vietnamese woman in traditional conical hat in rice field" class="split__img" loading="lazy">
+          <div class="split__visual image-reveal" data-reveal="left">
+            <img src="https://images.unsplash.com/photo-1555921015-5532091f6026?w=800&q=80" alt="Vietnamese woman in traditional conical hat in rice field" class="split__img ken-burns" loading="lazy">
             <div class="split__image-overlay"></div>
           </div>
 
           <div class="split__content" data-reveal="right" data-delay="2">
-            <span class="section__number">001</span>
-            <h2 class="headline-large mb-lg">Not A Travel Guide</h2>
+            <span class="section__number overline">001</span>
+            <h2 class="headline-large mb-lg">
+              <span class="split-text">Not A Travel Guide</span>
+            </h2>
             <p class="body-large mb-xl">
               This is not "Top 10 Things To Do." This is Vietnam in full—ancient to modern, beautiful to brutal, told by those who know it, for those who want to truly understand.
             </p>
             <p style="color: var(--gray-500); margin-bottom: var(--space-xl);">
               We go beyond surface-level tourism to explore what makes Vietnam one of the world's most complex and compelling cultures. Four thousand years of history. Fifty-four ethnic groups. Three distinct regions. A cuisine that's inseparable from identity.
             </p>
-            <a href="/about/" class="btn btn--ghost">
-              <span class="btn__text">Our Approach</span>
+            <a href="/about/" class="btn-magnetic">
+              <span class="btn-magnetic__bg"></span>
+              <span class="btn-magnetic__text">Our Approach</span>
             </a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Stats Section -->
+    <!-- Premium Stats Section -->
     <section class="section section--dark">
       <div class="container">
-        <div class="stats">
-          <div class="stat" data-reveal="up" data-delay="1">
-            <div class="stat__number" data-counter="4000" data-suffix="+">0</div>
-            <div class="stat__label">Years of History</div>
+        <div class="stats stagger-grid">
+          <div class="stat-premium animated-border" data-reveal="up">
+            <span class="stat-premium__number" data-counter="4000" data-suffix="+">0</span>
+            <span class="stat-premium__label">Years of History</span>
           </div>
-          <div class="stat" data-reveal="up" data-delay="2">
-            <div class="stat__number" data-counter="54">0</div>
-            <div class="stat__label">Ethnic Groups</div>
+          <div class="stat-premium animated-border" data-reveal="up">
+            <span class="stat-premium__number" data-counter="54">0</span>
+            <span class="stat-premium__label">Ethnic Groups</span>
           </div>
-          <div class="stat" data-reveal="up" data-delay="3">
-            <div class="stat__number" data-counter="3">0</div>
-            <div class="stat__label">Distinct Regions</div>
+          <div class="stat-premium animated-border" data-reveal="up">
+            <span class="stat-premium__number" data-counter="3">0</span>
+            <span class="stat-premium__label">Distinct Regions</span>
           </div>
-          <div class="stat" data-reveal="up" data-delay="4">
-            <div class="stat__number" data-counter="1000" data-suffix="+">0</div>
-            <div class="stat__label">Unique Dishes</div>
+          <div class="stat-premium animated-border" data-reveal="up">
+            <span class="stat-premium__number" data-counter="1000" data-suffix="+">0</span>
+            <span class="stat-premium__label">Unique Dishes</span>
           </div>
         </div>
       </div>
@@ -311,9 +353,10 @@
           </p>
         </div>
 
-        <div class="card-grid">
+        <div class="card-grid stagger-grid">
           <!-- Hanoi -->
-          <article class="card card--city" data-reveal="up" data-delay="1">
+          <article class="card card--city card-premium zoom-on-hover" data-reveal="up" data-tilt>
+            <div class="card-premium__shine"></div>
             <div class="card__image-wrap">
               <img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=600&q=80" alt="Hanoi Old Quarter street scene with motorbikes and colonial architecture" class="card__image" loading="lazy">
               <div class="card__image-overlay"></div>
@@ -326,7 +369,8 @@
           </article>
 
           <!-- Ho Chi Minh City -->
-          <article class="card card--city" data-reveal="up" data-delay="2">
+          <article class="card card--city card-premium zoom-on-hover" data-reveal="up" data-tilt>
+            <div class="card-premium__shine"></div>
             <div class="card__image-wrap">
               <img src="https://images.unsplash.com/photo-1583687355032-c9b66ab91bcf?w=600&q=80" alt="Ho Chi Minh City skyline at night with Bitexco tower" class="card__image" loading="lazy">
               <div class="card__image-overlay"></div>
@@ -339,7 +383,8 @@
           </article>
 
           <!-- Hue -->
-          <article class="card card--city" data-reveal="up" data-delay="3">
+          <article class="card card--city card-premium zoom-on-hover" data-reveal="up" data-tilt>
+            <div class="card-premium__shine"></div>
             <div class="card__image-wrap">
               <img src="https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=600&q=80" alt="Imperial City of Hue with traditional Vietnamese architecture" class="card__image" loading="lazy">
               <div class="card__image-overlay"></div>
