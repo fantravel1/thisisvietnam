@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vietnam travel itineraries for every traveler - 1 week, 2 weeks, and 3 week routes covering North to South, beaches, culture, and adventure. Plan your perfect Vietnam trip.">
+    <meta name="keywords" content="Vietnam itinerary, Vietnam travel route, Vietnam trip planning, Vietnam 2 weeks, Vietnam 1 week, North to South Vietnam">
+    <meta name="author" content="ThisIsVietnam">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Vietnam Itineraries | ThisIsVietnam">
+    <meta property="og:description" content="Sample routes for 1, 2, and 3 week Vietnam adventures.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1528127269322-539801943592?w=1200">
+    <meta property="og:url" content="https://thisisvietnam.com/itineraries/">
+    <meta property="og:type" content="website">
+
+    <title>Vietnam Itineraries - Trip Planning Routes | ThisIsVietnam</title>
+
+    <link rel="canonical" href="https://thisisvietnam.com/itineraries/">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        .itinerary-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 4rem;
+        }
+
+        .itinerary-header {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .itinerary-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .itinerary-header-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10, 10, 10, 0.95) 0%, transparent 60%);
+        }
+
+        .itinerary-header-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+        }
+
+        .itinerary-duration {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gold);
+            background: rgba(212, 168, 83, 0.15);
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            margin-bottom: 1rem;
+        }
+
+        .itinerary-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 400;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .itinerary-subtitle {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--gray);
+        }
+
+        .itinerary-body {
+            padding: 2rem;
+        }
+
+        .itinerary-overview {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            .itinerary-overview {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .overview-item {
+            text-align: center;
+        }
+
+        .overview-value {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--gold);
+            display: block;
+        }
+
+        .overview-label {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .day-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .day-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--gold), rgba(212, 168, 83, 0.1));
+        }
+
+        .day-item {
+            position: relative;
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .day-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .day-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: var(--gold);
+            border-radius: 50%;
+            transform: translateX(-5px);
+        }
+
+        .day-number {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .day-location {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .day-activities {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        .day-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .highlight-pill {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            color: var(--gray);
+            background: rgba(255, 255, 255, 0.03);
+            padding: 0.35rem 0.75rem;
+            border-radius: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .itinerary-tips {
+            background: rgba(212, 168, 83, 0.05);
+            border: 1px solid rgba(212, 168, 83, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .itinerary-tips h4 {
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+        }
+
+        .itinerary-tips ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .itinerary-tips li {
+            font-size: 0.875rem;
+            color: var(--gray);
+            padding-left: 1.25rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        .itinerary-tips li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+
+        .trip-type-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .trip-type-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .trip-type-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s var(--ease-out-expo);
+        }
+
+        .trip-type-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+        }
+
+        .trip-type-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .trip-type-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .trip-type-card p {
+            font-size: 0.875rem;
+            color: var(--gray);
+        }
+    </style>
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TravelGuide",
+        "name": "Vietnam Travel Itineraries",
+        "description": "Sample travel routes for visiting Vietnam",
+        "url": "https://thisisvietnam.com/itineraries/",
+        "about": {
+            "@type": "Country",
+            "name": "Vietnam"
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="loader-text">
+                <span>P</span><span>L</span><span>A</span><span>N</span>
+            </div>
+            <div class="loader-bar"><div class="loader-progress"></div></div>
+        </div>
+    </div>
+
+    <!-- Film Grain Overlay -->
+    <div class="film-grain"></div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor">
+        <div class="cursor-ring"></div>
+        <div class="cursor-dot"></div>
+    </div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress-circle">
+        <svg viewBox="0 0 100 100">
+            <circle class="progress-bg" cx="50" cy="50" r="45"/>
+            <circle class="progress-bar" cx="50" cy="50" r="45"/>
+        </svg>
+        <span class="progress-text">0%</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="../" class="nav-logo">
+            <span class="logo-this">THIS</span><span class="logo-is">IS</span><span class="logo-vietnam">VIETNAM</span>
+        </a>
+
+        <button class="nav-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="nav-overlay">
+            <div class="nav-overlay-content">
+                <ul class="nav-menu">
+                    <li><a href="../" data-text="Home">Home</a></li>
+                    <li><a href="../cities/" data-text="Cities">Cities</a></li>
+                    <li><a href="../food/" data-text="Food">Food</a></li>
+                    <li><a href="../history/" data-text="History">History</a></li>
+                    <li><a href="../culture/" data-text="Culture">Culture</a></li>
+                    <li><a href="../about/" data-text="About">About</a></li>
+                </ul>
+                <div class="nav-overlay-footer">
+                    <p>Discover the real Vietnam</p>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero hero-itineraries" style="min-height: 60vh;">
+            <div class="hero-media">
+                <img src="https://images.unsplash.com/photo-1528127269322-539801943592?w=1920" alt="Vietnam Landscape" class="hero-image" style="width: 100%; height: 100%; object-fit: cover;">
+                <div class="hero-overlay"></div>
+            </div>
+
+            <div class="blob-bg">
+                <div class="blob blob-1"></div>
+                <div class="blob blob-2"></div>
+            </div>
+
+            <div class="container hero-content">
+                <div class="hero-badge scroll-reveal">
+                    <span class="badge-line"></span>
+                    <span>Trip Planning</span>
+                    <span class="badge-line"></span>
+                </div>
+
+                <h1 class="hero-title">
+                    <span class="title-line scroll-reveal">
+                        <span class="split-text">Sample</span>
+                    </span>
+                    <span class="title-line scroll-reveal">
+                        <span class="text-gold">Itineraries</span>
+                    </span>
+                </h1>
+
+                <p class="hero-subtitle scroll-reveal">
+                    Routes for every type of traveler
+                </p>
+            </div>
+        </section>
+
+        <!-- Trip Types -->
+        <section class="section section-dark">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <span class="section-tag">Choose Your Adventure</span>
+                    <h2 class="section-title">What Kind of <span class="text-gold">Trip?</span></h2>
+                </div>
+
+                <div class="trip-type-grid">
+                    <div class="trip-type-card scroll-reveal">
+                        <div class="trip-type-icon">🏛️</div>
+                        <h3>Culture & History</h3>
+                        <p>Ancient capitals, imperial palaces, war history, and UNESCO sites</p>
+                    </div>
+                    <div class="trip-type-card scroll-reveal">
+                        <div class="trip-type-icon">🏖️</div>
+                        <h3>Beach & Relaxation</h3>
+                        <p>Pristine coastlines, island hopping, and resort life</p>
+                    </div>
+                    <div class="trip-type-card scroll-reveal">
+                        <div class="trip-type-icon">🥾</div>
+                        <h3>Adventure & Nature</h3>
+                        <p>Trekking, caves, highlands, and off-the-beaten-path</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1 Week Itinerary -->
+        <section class="section">
+            <div class="container">
+                <article class="itinerary-card scroll-reveal">
+                    <div class="itinerary-header">
+                        <img src="https://images.unsplash.com/photo-1509030450996-dd1a26dda07a?w=1200" alt="Hanoi Old Quarter" loading="lazy">
+                        <div class="itinerary-header-overlay"></div>
+                        <div class="itinerary-header-content">
+                            <span class="itinerary-duration">7 Days</span>
+                            <h2 class="itinerary-title">Classic Vietnam Highlights</h2>
+                            <p class="itinerary-subtitle">Hanoi → Ha Long Bay → Hoi An → Ho Chi Minh City</p>
+                        </div>
+                    </div>
+
+                    <div class="itinerary-body">
+                        <div class="itinerary-overview">
+                            <div class="overview-item">
+                                <span class="overview-value">4</span>
+                                <span class="overview-label">Destinations</span>
+                            </div>
+                            <div class="overview-item">
+                                <span class="overview-value">2</span>
+                                <span class="overview-label">Flights</span>
+                            </div>
+                            <div class="overview-item">
+                                <span class="overview-value">$800-1200</span>
+                                <span class="overview-label">Est. Budget</span>
+                            </div>
+                            <div class="overview-item">
+                                <span class="overview-value">Best For</span>
+                                <span class="overview-label">First-timers</span>
+                            </div>
+                        </div>
+
+                        <div class="day-timeline">
+                            <div class="day-item">
+                                <div class="day-number">Days 1-2</div>
+                                <div class="day-location">Hanoi</div>
+                                <div class="day-activities">
+                                    Explore the atmospheric Old Quarter, visit Ho Chi Minh Mausoleum and Temple of Literature.
+                                    Wander around Hoan Kiem Lake, catch a water puppet show, and feast on street food—pho, bun cha, and egg coffee.
+                                </div>
+                                <div class="day-highlights">
+                                    <span class="highlight-pill">Old Quarter</span>
+                                    <span class="highlight-pill">Temple of Literature</span>
+                                    <span class="highlight-pill">Street Food Tour</span>
+                                </div>
+                            </div>
+
+                            <div class="day-item">
+                                <div class="day-number">Days 3-4</div>
+                                <div class="day-location">Ha Long Bay</div>
+                                <div class="day-activities">
+                                    Overnight cruise through the UNESCO-listed bay. Kayak through limestone karsts,
+                                    explore caves, watch sunrise over emerald waters, and enjoy fresh seafood on deck.
+                                </div>
+                                <div class="day-highlights">
+                                    <span class="highlight-pill">Junk Boat Cruise</span>
+                                    <span class="highlight-pill">Kayaking</span>
+                                    <span class="highlight-pill">Cave Exploration</span>
+                                </div>
+                            </div>
+
+                            <div class="day-item">
+                                <div class="day-number">Days 5-6</div>
+                                <div class="day-location">Hoi An</div>
+                                <div class="day-activities">
+                                    Fly to Da Nang, transfer to ancient Hoi An. Visit the Japanese Bridge, explore tailor shops,
+                                    and experience the magical Full Moon Lantern Festival (if timing aligns). Day trip to My Son ruins.
+                                </div>
+                                <div class="day-highlights">
+                                    <span class="highlight-pill">Ancient Town</span>
+                                    <span class="highlight-pill">Tailoring</span>
+                                    <span class="highlight-pill">Lantern Night</span>
+                                </div>
+                            </div>
+
+                            <div class="day-item">
+                                <div class="day-number">Day 7</div>
+                                <div class="day-location">Ho Chi Minh City</div>
+                                <div class="day-activities">
+                                    Fly south to Saigon. Visit the War Remnants Museum and Independence Palace for history,
+                                    wander Ben Thanh Market, and end with rooftop drinks watching the city lights.
+                                </div>
+                                <div class="day-highlights">
+                                    <span class="highlight-pill">War History</span>
+                                    <span class="highlight-pill">Ben Thanh</span>
+                                    <span class="highlight-pill">Rooftop Bars</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="itinerary-tips">
+                            <h4>Pro Tips</h4>
+                            <ul>
+                                <li>Book Ha Long Bay cruise in advance, especially for weekend trips</li>
+                                <li>Internal flights are cheap—book VietJet or Bamboo Airways early</li>
+                                <li>In Hoi An, get measured on Day 5 so clothes are ready by Day 6</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 2 Week Itinerary -->
+        <section class="section section-dark">
+            <div class="container">
+                <article class="itinerary-card scroll-reveal">
+                    <div class="itinerary-header">
+                        <img src="https://images.unsplash.com/photo-1528127269322-539801943592?w=1200" alt="Sapa Rice Terraces" loading="lazy">
+                        <div class="itinerary-header-overlay"></div>
+                        <div class="itinerary-header-content">
+                            <span class="itinerary-duration">14 Days</span>
+                            <h2 class="itinerary-title">North to South Explorer</h2>
+                            <p class="itinerary-subtitle">Sapa → Hanoi → Ha Long → Hue → Hoi An → Saigon → Mekong</p>
+                        </div>
+                    </div>
+
+                    <div class="itinerary-body">
+                        <div class="itinerary-overview">
+                            <div class="overview-item">
+                                <span class="overview-value">7</span>
+                                <span class="overview-label">Destinations</span>
+                            </div>
+                            <div class="overview-item">
+                                <span class="overview-value">2</span>
+                                <span class="overview-label">Flights</span>
+                            </div>
+                            <div class="overview-item">
+                                <span class="overview-value">$1500-2500</span>
+                                <span class="overview-label">Est. Budget</span>
+                            </div>
+                            <div class="overview-item">
+                                <span class="overview-value">Best For</span>
+                                <span class="overview-label">Comprehensive</span>
+                            </div>
+                        </div>
+
+                        <div class="day-timeline">
+                            <div class="day-item">
+                                <div class="day-number">Days 1-2</div>
+                                <div class="day-location">Sapa</div>
+                                <div class="day-activities">
+                                    Overnight train from Hanoi to Lao Cai, then transfer to misty Sapa. Trek through rice terraces,
+                                    visit H'mong and Dao villages, and wake up to mountain views.
+                                </div>
+                                <div class="day-highlights">
+                                    <span class="highlight-pill">Rice Terraces</span>
+                                    <span class="highlight-pill">Hill Tribes</span>
+                                    <span class="highlight-pill">Trekking</span>
+                                </div>
+                            </div>
+
+                            <div class="day-item">
+                                <div class="day-number">Days 3-4</div>
+                                <div class="day-location">Hanoi</div>
+                                <div class="day-activities">
+                                    Return to Hanoi for the classic Old Quarter experience. Ho Chi Minh Complex,
+                                    Temple of Literature, evening street food crawl in the 36 streets.
+                                </div>
+                                <div class="day-highlights">
+                                    <span class="highlight-pill">Old Quarter</span>
+                                    <span class="highlight-pill">History</span>
+                                    <span class="highlight-pill">Street Food</span>
+                                </div>
+                            </div>
+
+                            <div class="day-item">
+                                <div class="day-number">Days 5-6</div>
+                                <div class="day-location">Ha Long Bay</div>
+                                <div class="day-activities">
+                                    Two-day cruise through the UNESCO wonder. Kayaking, swimming, cave visits,
+                                    cooking classes on board, and sunset cocktails among the karsts.
+                                </div>
+                                <div class="day-highlights">
+                                    <span class="highlight-pill">Cruise</span>
+                                    <span class="highlight-pill">Kayaking</span>
+                                    <span class="highlight-pill">Caves</span>
+                                </div>
+                            </div>
+
+                            <div class="day-item">
+                                <div class="day-number">Days 7-8</div>
+                                <div class="day-location">Hue</div>
+                                <div class="day-activities">
+                                    Fly to Hue, Vietnam's imperial capital. Explore the Citadel, cruise the Perfume River
+                                    to Thien Mu Pagoda, visit royal tombs, and savor Hue's unique cuisine.
+                                </div>
+                                <div class="day-highlights">
+                                    <span class="highlight-pill">Imperial Citadel</span>
+                                    <span class="highlight-pill">Royal Tombs</span>
+                                    <span class="highlight-pill">Perfume River</span>
+                                </div>
+                            </div>
+
+                            <div class="day-item">
+                                <div class="day-number">Days 9-11</div>
+                                <div class="day-location">Hoi An & Da Nang</div>
+                                <div class="day-activities">
+                                    Drive over the Hai Van Pass to Hoi An. Three days to explore the ancient town,
+                                    get clothes tailored, visit My Son, relax on An Bang Beach, and watch the Dragon Bridge breathe fire.
+                                </div>
+                                <div class="day-highlights">
+                                    <span class="highlight-pill">Ancient Town</span>
+                                    <span class="highlight-pill">Tailoring</span>
+                                    <span class="highlight-pill">Beach</span>
+                                    <span class="highlight-pill">Dragon Bridge</span>
+                                </div>
+                            </div>
+
+                            <div class="day-item">
+                                <div class="day-number">Days 12-13</div>
+                                <div class="day-location">Ho Chi Minh City</div>
+                                <div class="day-activities">
+                                    Fly to Saigon. Day trip to Cu Chi Tunnels, explore District 1 landmarks,
+                                    Chinatown's temples, rooftop bars, and the legendary street food scene.
+                                </div>
+                                <div class="day-highlights">
+                                    <span class="highlight-pill">Cu Chi Tunnels</span>
+                                    <span class="highlight-pill">War Museum</span>
+                                    <span class="highlight-pill">Nightlife</span>
+                                </div>
+                            </div>
+
+                            <div class="day-item">
+                                <div class="day-number">Day 14</div>
+                                <div class="day-location">Mekong Delta</div>
+                                <div class="day-activities">
+                                    Day trip to the delta. Early morning at Cai Be floating market,
+                                    sampan rides through palm-shaded canals, fruit orchards, and coconut candy workshops.
+                                </div>
+                                <div class="day-highlights">
+                                    <span class="highlight-pill">Floating Market</span>
+                                    <span class="highlight-pill">Sampan Ride</span>
+                                    <span class="highlight-pill">Fruit Orchards</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="itinerary-tips">
+                            <h4>Pro Tips</h4>
+                            <ul>
+                                <li>The overnight train to Sapa is an experience itself—book a soft sleeper cabin</li>
+                                <li>The Hai Van Pass is stunning—consider renting a motorbike or hiring a driver</li>
+                                <li>Allow flexibility in Hoi An—it's easy to want more time there</li>
+                                <li>Consider an overnight in the Mekong for a more authentic experience</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 3 Week Itinerary -->
+        <section class="section">
+            <div class="container">
+                <article class="itinerary-card scroll-reveal">
+                    <div class="itinerary-header">
+                        <img src="https://images.unsplash.com/photo-1570366583862-f91883984fde?w=1200" alt="Da Lat Flower Fields" loading="lazy">
+                        <div class="itinerary-header-overlay"></div>
+                        <div class="itinerary-header-content">
+                            <span class="itinerary-duration">21 Days</span>
+                            <h2 class="itinerary-title">Ultimate Vietnam Adventure</h2>
+                            <p class="itinerary-subtitle">The complete journey with highlands, islands & hidden gems</p>
+                        </div>
+                    </div>
+
+                    <div class="itinerary-body">
+                        <div class="itinerary-overview">
+                            <div class="overview-item">
+                                <span class="overview-value">10+</span>
+                                <span class="overview-label">Destinations</span>
+                            </div>
+                            <div class="overview-item">
+                                <span class="overview-value">3-4</span>
+                                <span class="overview-label">Flights</span>
+                            </div>
+                            <div class="overview-item">
+                                <span class="overview-value">$2500-4000</span>
+                                <span class="overview-label">Est. Budget</span>
+                            </div>
+                            <div class="overview-item">
+                                <span class="overview-value">Best For</span>
+                                <span class="overview-label">Deep Divers</span>
+                            </div>
+                        </div>
+
+                        <div class="day-timeline">
+                            <div class="day-item">
+                                <div class="day-number">Days 1-3</div>
+                                <div class="day-location">Hanoi & Ninh Binh</div>
+                                <div class="day-activities">
+                                    Start in Hanoi then escape to Ninh Binh—the "Ha Long Bay on land." Row through Tam Coc's
+                                    river caves, cycle through rice paddies, climb to Mua Cave viewpoint.
+                                </div>
+                                <div class="day-highlights">
+                                    <span class="highlight-pill">Tam Coc</span>
+                                    <span class="highlight-pill">Mua Cave</span>
+                                    <span class="highlight-pill">Cycling</span>
+                                </div>
+                            </div>
+
+                            <div class="day-item">
+                                <div class="day-number">Days 4-5</div>
+                                <div class="day-location">Ha Long Bay</div>
+                                <div class="day-activities">
+                                    Luxury cruise through the bay with kayaking, swimming, cooking classes,
+                                    and sleeping under the stars on deck.
+                                </div>
+                                <div class="day-highlights">
+                                    <span class="highlight-pill">Overnight Cruise</span>
+                                    <span class="highlight-pill">Kayaking</span>
+                                </div>
+                            </div>
+
+                            <div class="day-item">
+                                <div class="day-number">Days 6-8</div>
+                                <div class="day-location">Sapa & Ha Giang</div>
+                                <div class="day-activities">
+                                    Trek Sapa's terraces then continue to remote Ha Giang for the epic motorbike loop—
+                                    Vietnam's most spectacular mountain scenery through ethnic minority regions.
+                                </div>
+                                <div class="day-highlights">
+                                    <span class="highlight-pill">Ha Giang Loop</span>
+                                    <span class="highlight-pill">Rice Terraces</span>
+                                    <span class="highlight-pill">Minority Villages</span>
+                                </div>
+                            </div>
+
+                            <div class="day-item">
+                                <div class="day-number">Days 9-10</div>
+                                <div class="day-location">Phong Nha</div>
+                                <div class="day-activities">
+                                    Fly to Dong Hoi for Phong Nha-Ke Bang National Park. Explore Paradise Cave,
+                                    boat through Phong Nha Cave, and optionally book the mind-blowing Son Doong expedition.
+                                </div>
+                                <div class="day-highlights">
+                                    <span class="highlight-pill">World's Largest Caves</span>
+                                    <span class="highlight-pill">National Park</span>
+                                </div>
+                            </div>
+
+                            <div class="day-item">
+                                <div class="day-number">Days 11-12</div>
+                                <div class="day-location">Hue</div>
+                                <div class="day-activities">
+                                    Imperial city exploration—Citadel, royal tombs, Perfume River cruise,
+                                    and the famous Hue royal cuisine.
+                                </div>
+                                <div class="day-highlights">
+                                    <span class="highlight-pill">Imperial History</span>
+                                    <span class="highlight-pill">Royal Cuisine</span>
+                                </div>
+                            </div>
+
+                            <div class="day-item">
+                                <div class="day-number">Days 13-15</div>
+                                <div class="day-location">Hoi An & Da Nang</div>
+                                <div class="day-activities">
+                                    Ancient town magic, beach time at An Bang, Ba Na Hills' Golden Bridge,
+                                    and the Dragon Bridge fire show.
+                                </div>
+                                <div class="day-highlights">
+                                    <span class="highlight-pill">Lanterns</span>
+                                    <span class="highlight-pill">Golden Bridge</span>
+                                    <span class="highlight-pill">Beach</span>
+                                </div>
+                            </div>
+
+                            <div class="day-item">
+                                <div class="day-number">Days 16-17</div>
+                                <div class="day-location">Nha Trang or Da Lat</div>
+                                <div class="day-activities">
+                                    Choose your vibe: Nha Trang for beaches, diving, and nightlife, OR Da Lat for
+                                    cool highland weather, waterfalls, and French colonial charm.
+                                </div>
+                                <div class="day-highlights">
+                                    <span class="highlight-pill">Beach or Mountains</span>
+                                    <span class="highlight-pill">Your Choice</span>
+                                </div>
+                            </div>
+
+                            <div class="day-item">
+                                <div class="day-number">Days 18-19</div>
+                                <div class="day-location">Ho Chi Minh City</div>
+                                <div class="day-activities">
+                                    Saigon's energy—Cu Chi Tunnels, war history, street food tours,
+                                    rooftop bars, and the chaos of the motorbike rivers.
+                                </div>
+                                <div class="day-highlights">
+                                    <span class="highlight-pill">War History</span>
+                                    <span class="highlight-pill">Street Food</span>
+                                    <span class="highlight-pill">Nightlife</span>
+                                </div>
+                            </div>
+
+                            <div class="day-item">
+                                <div class="day-number">Days 20-21</div>
+                                <div class="day-location">Mekong Delta or Phu Quoc</div>
+                                <div class="day-activities">
+                                    End with river life in the Mekong (floating markets, homestays) OR fly to
+                                    Phu Quoc island for tropical beaches and relaxation before departure.
+                                </div>
+                                <div class="day-highlights">
+                                    <span class="highlight-pill">Floating Markets</span>
+                                    <span class="highlight-pill">Island Paradise</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="itinerary-tips">
+                            <h4>Pro Tips</h4>
+                            <ul>
+                                <li>Ha Giang loop requires 3-4 days minimum—consider an Easy Rider tour if not confident on motorbikes</li>
+                                <li>Son Doong Cave expedition must be booked months in advance and costs ~$3000</li>
+                                <li>Phu Quoc is visa-free for 30 days even if your Vietnam visa has expired</li>
+                                <li>Build in buffer days—Vietnam has a way of making you want to stay longer everywhere</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section cta-section">
+            <div class="cta-background">
+                <img src="https://images.unsplash.com/photo-1535850579364-952ef600d22e?w=1920" alt="Hoi An Lanterns" loading="lazy">
+                <div class="cta-overlay"></div>
+            </div>
+            <div class="container">
+                <div class="cta-content scroll-reveal">
+                    <h2 class="cta-title">Ready to <span class="text-gold">Plan?</span></h2>
+                    <p class="cta-text">Explore destinations and start your adventure</p>
+                    <div class="cta-buttons">
+                        <a href="../cities/" class="btn btn-magnetic btn-primary">
+                            <span class="btn-text">Explore Cities</span>
+                            <span class="btn-icon">&rarr;</span>
+                        </a>
+                        <a href="../guide/" class="btn btn-magnetic btn-outline">
+                            <span class="btn-text">Travel Guide</span>
+                            <span class="btn-icon">&rarr;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="../" class="footer-logo">
+                        <span class="logo-this">THIS</span><span class="logo-is">IS</span><span class="logo-vietnam">VIETNAM</span>
+                    </a>
+                    <p>Authentic stories from the land of the ascending dragon.</p>
+                </div>
+
+                <div class="footer-nav">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="../cities/">Cities</a></li>
+                        <li><a href="../food/">Food</a></li>
+                        <li><a href="../history/">History</a></li>
+                        <li><a href="../culture/">Culture</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-nav">
+                    <h4>Plan</h4>
+                    <ul>
+                        <li><a href="../guide/">Travel Guide</a></li>
+                        <li><a href="../itineraries/">Itineraries</a></li>
+                        <li><a href="../gallery/">Gallery</a></li>
+                        <li><a href="../contact/">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-nav">
+                    <h4>Cities</h4>
+                    <ul>
+                        <li><a href="../cities/hanoi/">Hanoi</a></li>
+                        <li><a href="../cities/saigon/">Ho Chi Minh City</a></li>
+                        <li><a href="../cities/danang/">Da Nang</a></li>
+                        <li><a href="../cities/hoian/">Hoi An</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 ThisIsVietnam. All rights reserved.</p>
+                <p class="footer-tagline">Made with love for Vietnam</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

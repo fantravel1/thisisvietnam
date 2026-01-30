@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Stunning photography from across Vietnam - rice terraces, ancient towns, street life, landscapes, and the vibrant colors of Vietnamese culture captured in images.">
+    <meta name="keywords" content="Vietnam photos, Vietnam photography, Vietnam images, Vietnam landscapes, Vietnam travel photos, Vietnamese culture photos">
+    <meta name="author" content="ThisIsVietnam">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Photo Gallery | ThisIsVietnam">
+    <meta property="og:description" content="Visual stories from the land of the ascending dragon.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1528127269322-539801943592?w=1200">
+    <meta property="og:url" content="https://thisisvietnam.com/gallery/">
+    <meta property="og:type" content="website">
+
+    <title>Photo Gallery - Visual Stories from Vietnam | ThisIsVietnam</title>
+
+    <link rel="canonical" href="https://thisisvietnam.com/gallery/">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        .gallery-hero {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 120px;
+        }
+
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .filter-btn {
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--gray);
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: all 0.3s var(--ease-out-expo);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            color: var(--gold);
+            border-color: var(--gold);
+            background: rgba(212, 168, 83, 0.1);
+        }
+
+        .photo-grid {
+            columns: 4;
+            column-gap: 1.5rem;
+        }
+
+        @media (max-width: 1200px) {
+            .photo-grid {
+                columns: 3;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .photo-grid {
+                columns: 2;
+                column-gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .photo-grid {
+                columns: 1;
+            }
+        }
+
+        .photo-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .photo-item {
+                margin-bottom: 1rem;
+            }
+        }
+
+        .photo-item img {
+            width: 100%;
+            display: block;
+            transition: transform 0.6s var(--ease-out-expo);
+        }
+
+        .photo-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .photo-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+        }
+
+        .photo-item:hover .photo-overlay {
+            opacity: 1;
+        }
+
+        .photo-info h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: var(--white);
+            margin-bottom: 0.25rem;
+        }
+
+        .photo-info p {
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            color: var(--gray);
+        }
+
+        .photo-category {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gold);
+            background: rgba(0, 0, 0, 0.6);
+            padding: 0.35rem 0.75rem;
+            border-radius: 100px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .photo-item:hover .photo-category {
+            opacity: 1;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90vw;
+            max-height: 90vh;
+            position: relative;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -3rem;
+            right: 0;
+            width: 48px;
+            height: 48px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-close:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .lightbox-caption {
+            text-align: center;
+            margin-top: 1rem;
+            color: var(--gray);
+        }
+
+        .lightbox-caption h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 0.25rem;
+        }
+
+        .gallery-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 4rem;
+            padding-top: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .gallery-stat {
+            text-align: center;
+        }
+
+        .gallery-stat-number {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--gold);
+        }
+
+        .gallery-stat-label {
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-stats {
+                flex-wrap: wrap;
+                gap: 2rem;
+            }
+        }
+    </style>
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ImageGallery",
+        "name": "Vietnam Photo Gallery",
+        "description": "Visual stories from across Vietnam",
+        "url": "https://thisisvietnam.com/gallery/",
+        "about": {
+            "@type": "Country",
+            "name": "Vietnam"
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Film Grain Overlay -->
+    <div class="film-grain"></div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor">
+        <div class="cursor-ring"></div>
+        <div class="cursor-dot"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="../" class="nav-logo">
+            <span class="logo-this">THIS</span><span class="logo-is">IS</span><span class="logo-vietnam">VIETNAM</span>
+        </a>
+
+        <button class="nav-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="nav-overlay">
+            <div class="nav-overlay-content">
+                <ul class="nav-menu">
+                    <li><a href="../" data-text="Home">Home</a></li>
+                    <li><a href="../cities/" data-text="Cities">Cities</a></li>
+                    <li><a href="../food/" data-text="Food">Food</a></li>
+                    <li><a href="../history/" data-text="History">History</a></li>
+                    <li><a href="../culture/" data-text="Culture">Culture</a></li>
+                    <li><a href="../about/" data-text="About">About</a></li>
+                </ul>
+                <div class="nav-overlay-footer">
+                    <p>Discover the real Vietnam</p>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="gallery-hero section-dark">
+            <div class="blob-bg">
+                <div class="blob blob-1"></div>
+                <div class="blob blob-2"></div>
+            </div>
+
+            <div class="container">
+                <div class="hero-badge scroll-reveal">
+                    <span class="badge-line"></span>
+                    <span>Visual Stories</span>
+                    <span class="badge-line"></span>
+                </div>
+
+                <h1 class="hero-title">
+                    <span class="title-line scroll-reveal">
+                        <span class="split-text">Photo</span>
+                    </span>
+                    <span class="title-line scroll-reveal">
+                        <span class="text-gold">Gallery</span>
+                    </span>
+                </h1>
+
+                <p class="hero-subtitle scroll-reveal">
+                    Vietnam through the lens
+                </p>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="section section-dark">
+            <div class="container">
+                <div class="gallery-filters scroll-reveal">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="landscape">Landscapes</button>
+                    <button class="filter-btn" data-filter="city">Cities</button>
+                    <button class="filter-btn" data-filter="culture">Culture</button>
+                    <button class="filter-btn" data-filter="food">Food</button>
+                    <button class="filter-btn" data-filter="people">People</button>
+                </div>
+
+                <div class="photo-grid">
+                    <!-- Rice Terraces -->
+                    <figure class="photo-item scroll-reveal" data-category="landscape" onclick="openLightbox(this)">
+                        <img src="https://images.unsplash.com/photo-1528127269322-539801943592?w=600" alt="Sapa Rice Terraces" loading="lazy">
+                        <span class="photo-category">Landscape</span>
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Sapa Rice Terraces</h3>
+                                <p>Northern Vietnam</p>
+                            </div>
+                        </div>
+                    </figure>
+
+                    <!-- Hoi An Lanterns -->
+                    <figure class="photo-item scroll-reveal" data-category="culture" onclick="openLightbox(this)">
+                        <img src="https://images.unsplash.com/photo-1535850579364-952ef600d22e?w=600" alt="Hoi An Lanterns" loading="lazy">
+                        <span class="photo-category">Culture</span>
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Lantern Glow</h3>
+                                <p>Hoi An Ancient Town</p>
+                            </div>
+                        </div>
+                    </figure>
+
+                    <!-- Pho -->
+                    <figure class="photo-item scroll-reveal" data-category="food" onclick="openLightbox(this)">
+                        <img src="https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=600" alt="Vietnamese Pho" loading="lazy">
+                        <span class="photo-category">Food</span>
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Morning Pho</h3>
+                                <p>Vietnam's Soul Food</p>
+                            </div>
+                        </div>
+                    </figure>
+
+                    <!-- Saigon Skyline -->
+                    <figure class="photo-item scroll-reveal" data-category="city" onclick="openLightbox(this)">
+                        <img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=600" alt="Saigon Skyline" loading="lazy">
+                        <span class="photo-category">City</span>
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>City of Lights</h3>
+                                <p>Ho Chi Minh City</p>
+                            </div>
+                        </div>
+                    </figure>
+
+                    <!-- Ha Long Bay -->
+                    <figure class="photo-item scroll-reveal" data-category="landscape" onclick="openLightbox(this)">
+                        <img src="https://images.unsplash.com/photo-1528127269322-539801943592?w=600" alt="Ha Long Bay" loading="lazy">
+                        <span class="photo-category">Landscape</span>
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Emerald Waters</h3>
+                                <p>Ha Long Bay</p>
+                            </div>
+                        </div>
+                    </figure>
+
+                    <!-- Street Vendor -->
+                    <figure class="photo-item scroll-reveal" data-category="people" onclick="openLightbox(this)">
+                        <img src="https://images.unsplash.com/photo-1555921015-5532091f6026?w=600" alt="Street Vendor" loading="lazy">
+                        <span class="photo-category">People</span>
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Morning Market</h3>
+                                <p>Hanoi Street Life</p>
+                            </div>
+                        </div>
+                    </figure>
+
+                    <!-- Dragon Bridge -->
+                    <figure class="photo-item scroll-reveal" data-category="city" onclick="openLightbox(this)">
+                        <img src="https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=600" alt="Dragon Bridge Da Nang" loading="lazy">
+                        <span class="photo-category">City</span>
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Dragon Bridge</h3>
+                                <p>Da Nang</p>
+                            </div>
+                        </div>
+                    </figure>
+
+                    <!-- Banh Mi -->
+                    <figure class="photo-item scroll-reveal" data-category="food" onclick="openLightbox(this)">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600" alt="Banh Mi" loading="lazy">
+                        <span class="photo-category">Food</span>
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Banh Mi</h3>
+                                <p>The Perfect Sandwich</p>
+                            </div>
+                        </div>
+                    </figure>
+
+                    <!-- Conical Hat -->
+                    <figure class="photo-item scroll-reveal" data-category="culture" onclick="openLightbox(this)">
+                        <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600" alt="Non La Conical Hat" loading="lazy">
+                        <span class="photo-category">Culture</span>
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Non La</h3>
+                                <p>The Conical Hat</p>
+                            </div>
+                        </div>
+                    </figure>
+
+                    <!-- Motorbike Traffic -->
+                    <figure class="photo-item scroll-reveal" data-category="city" onclick="openLightbox(this)">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600" alt="Motorbike Traffic Vietnam" loading="lazy">
+                        <span class="photo-category">City</span>
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Motorbike Ballet</h3>
+                                <p>Rush Hour</p>
+                            </div>
+                        </div>
+                    </figure>
+
+                    <!-- Spring Rolls -->
+                    <figure class="photo-item scroll-reveal" data-category="food" onclick="openLightbox(this)">
+                        <img src="https://images.unsplash.com/photo-1569058242567-93de6f36f8eb?w=600" alt="Vietnamese Spring Rolls" loading="lazy">
+                        <span class="photo-category">Food</span>
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Fresh Rolls</h3>
+                                <p>Goi Cuon</p>
+                            </div>
+                        </div>
+                    </figure>
+
+                    <!-- Temple -->
+                    <figure class="photo-item scroll-reveal" data-category="culture" onclick="openLightbox(this)">
+                        <img src="https://images.unsplash.com/photo-1557750255-c76072a7aad1?w=600" alt="Vietnamese Temple" loading="lazy">
+                        <span class="photo-category">Culture</span>
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Sacred Spaces</h3>
+                                <p>Buddhist Temple</p>
+                            </div>
+                        </div>
+                    </figure>
+
+                    <!-- Beach -->
+                    <figure class="photo-item scroll-reveal" data-category="landscape" onclick="openLightbox(this)">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600" alt="Vietnam Beach" loading="lazy">
+                        <span class="photo-category">Landscape</span>
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Coastal Paradise</h3>
+                                <p>Central Vietnam</p>
+                            </div>
+                        </div>
+                    </figure>
+
+                    <!-- Coffee -->
+                    <figure class="photo-item scroll-reveal" data-category="food" onclick="openLightbox(this)">
+                        <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600" alt="Vietnamese Coffee" loading="lazy">
+                        <span class="photo-category">Food</span>
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Ca Phe</h3>
+                                <p>Vietnamese Coffee</p>
+                            </div>
+                        </div>
+                    </figure>
+
+                    <!-- Fishing Village -->
+                    <figure class="photo-item scroll-reveal" data-category="people" onclick="openLightbox(this)">
+                        <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600" alt="Fishing Village" loading="lazy">
+                        <span class="photo-category">People</span>
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Fishermen</h3>
+                                <p>Coastal Life</p>
+                            </div>
+                        </div>
+                    </figure>
+
+                    <!-- Hanoi Street -->
+                    <figure class="photo-item scroll-reveal" data-category="city" onclick="openLightbox(this)">
+                        <img src="https://images.unsplash.com/photo-1509030450996-dd1a26dda07a?w=600" alt="Hanoi Old Quarter" loading="lazy">
+                        <span class="photo-category">City</span>
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Old Quarter</h3>
+                                <p>Hanoi</p>
+                            </div>
+                        </div>
+                    </figure>
+
+                    <!-- Waterfall -->
+                    <figure class="photo-item scroll-reveal" data-category="landscape" onclick="openLightbox(this)">
+                        <img src="https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?w=600" alt="Vietnam Waterfall" loading="lazy">
+                        <span class="photo-category">Landscape</span>
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Hidden Falls</h3>
+                                <p>Central Highlands</p>
+                            </div>
+                        </div>
+                    </figure>
+
+                    <!-- Market -->
+                    <figure class="photo-item scroll-reveal" data-category="people" onclick="openLightbox(this)">
+                        <img src="https://images.unsplash.com/photo-1555126634-323283e090fa?w=600" alt="Vietnamese Market" loading="lazy">
+                        <span class="photo-category">People</span>
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Market Colors</h3>
+                                <p>Daily Life</p>
+                            </div>
+                        </div>
+                    </figure>
+
+                    <!-- Night Market -->
+                    <figure class="photo-item scroll-reveal" data-category="city" onclick="openLightbox(this)">
+                        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=600" alt="Vietnam Night Market" loading="lazy">
+                        <span class="photo-category">City</span>
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Night Market</h3>
+                                <p>After Dark</p>
+                            </div>
+                        </div>
+                    </figure>
+
+                    <!-- Rice Field Worker -->
+                    <figure class="photo-item scroll-reveal" data-category="people" onclick="openLightbox(this)">
+                        <img src="https://images.unsplash.com/photo-1570366583862-f91883984fde?w=600" alt="Rice Field Worker" loading="lazy">
+                        <span class="photo-category">People</span>
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Harvest Season</h3>
+                                <p>Rice Paddies</p>
+                            </div>
+                        </div>
+                    </figure>
+                </div>
+
+                <div class="gallery-stats scroll-reveal">
+                    <div class="gallery-stat">
+                        <span class="gallery-stat-number counter" data-target="20">0</span>
+                        <span class="gallery-stat-label">Photos</span>
+                    </div>
+                    <div class="gallery-stat">
+                        <span class="gallery-stat-number counter" data-target="6">0</span>
+                        <span class="gallery-stat-label">Categories</span>
+                    </div>
+                    <div class="gallery-stat">
+                        <span class="gallery-stat-number counter" data-target="12">0</span>
+                        <span class="gallery-stat-label">Locations</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+            <img src="" alt="" id="lightbox-img">
+            <div class="lightbox-caption">
+                <h3 id="lightbox-title"></h3>
+                <p id="lightbox-location"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="../" class="footer-logo">
+                        <span class="logo-this">THIS</span><span class="logo-is">IS</span><span class="logo-vietnam">VIETNAM</span>
+                    </a>
+                    <p>Authentic stories from the land of the ascending dragon.</p>
+                </div>
+
+                <div class="footer-nav">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="../cities/">Cities</a></li>
+                        <li><a href="../food/">Food</a></li>
+                        <li><a href="../history/">History</a></li>
+                        <li><a href="../culture/">Culture</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-nav">
+                    <h4>Cities</h4>
+                    <ul>
+                        <li><a href="../cities/hanoi/">Hanoi</a></li>
+                        <li><a href="../cities/saigon/">Ho Chi Minh City</a></li>
+                        <li><a href="../cities/danang/">Da Nang</a></li>
+                        <li><a href="../cities/hue/">Hue</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-nav">
+                    <h4>Info</h4>
+                    <ul>
+                        <li><a href="../about/">About</a></li>
+                        <li><a href="../contact/">Contact</a></li>
+                        <li><a href="../guide/">Travel Guide</a></li>
+                        <li><a href="../gallery/">Gallery</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 ThisIsVietnam. All rights reserved.</p>
+                <p class="footer-tagline">Made with love for Vietnam</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Gallery Filter
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+                document.querySelectorAll('.photo-item').forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Lightbox
+        function openLightbox(el) {
+            const img = el.querySelector('img');
+            const title = el.querySelector('.photo-info h3').textContent;
+            const location = el.querySelector('.photo-info p').textContent;
+
+            document.getElementById('lightbox-img').src = img.src.replace('w=600', 'w=1200');
+            document.getElementById('lightbox-title').textContent = title;
+            document.getElementById('lightbox-location').textContent = location;
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('lightbox')) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
