@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <!-- Homepage -->
   <url>
@@ -8,8 +8,94 @@
     <lastmod>2025-01-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://thisisvietnam.com/"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://thisisvietnam.com/vi/"/>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1528127269322-539801943592</image:loc>
+      <image:title>Vietnam - Land of the Ascending Dragon</image:title>
+    </image:image>
+  </url>
+
+  <!-- Cities Section -->
+  <url>
+    <loc>https://thisisvietnam.com/cities/</loc>
+    <lastmod>2025-01-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1583417319070-4a69db38a482</image:loc>
+      <image:title>Vietnam Cities</image:title>
+    </image:image>
+  </url>
+
+  <!-- Hanoi -->
+  <url>
+    <loc>https://thisisvietnam.com/cities/hanoi/</loc>
+    <lastmod>2025-01-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1509030450996-dd1a26dda07a</image:loc>
+      <image:title>Hanoi Old Quarter</image:title>
+    </image:image>
+  </url>
+
+  <!-- Ho Chi Minh City / Saigon -->
+  <url>
+    <loc>https://thisisvietnam.com/cities/saigon/</loc>
+    <lastmod>2025-01-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1583417319070-4a69db38a482</image:loc>
+      <image:title>Ho Chi Minh City Skyline</image:title>
+    </image:image>
+  </url>
+
+  <!-- Da Nang -->
+  <url>
+    <loc>https://thisisvietnam.com/cities/danang/</loc>
+    <lastmod>2025-01-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1559592413-7cec4d0cae2b</image:loc>
+      <image:title>Da Nang Dragon Bridge</image:title>
+    </image:image>
+  </url>
+
+  <!-- Hue -->
+  <url>
+    <loc>https://thisisvietnam.com/cities/hue/</loc>
+    <lastmod>2025-01-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1528127269322-539801943592</image:loc>
+      <image:title>Hue Imperial City</image:title>
+    </image:image>
+  </url>
+
+  <!-- Hoi An -->
+  <url>
+    <loc>https://thisisvietnam.com/cities/hoian/</loc>
+    <lastmod>2025-01-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1535850579364-952ef600d22e</image:loc>
+      <image:title>Hoi An Lanterns</image:title>
+    </image:image>
+  </url>
+
+  <!-- Food Section -->
+  <url>
+    <loc>https://thisisvietnam.com/food/</loc>
+    <lastmod>2025-01-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43</image:loc>
+      <image:title>Vietnamese Cuisine</image:title>
+    </image:image>
   </url>
 
   <!-- History Section -->
@@ -18,58 +104,10 @@
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-  </url>
-
-  <!-- Cities Section -->
-  <url>
-    <loc>https://thisisvietnam.com/cities/</loc>
-    <lastmod>2025-01-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://thisisvietnam.com/cities/hanoi/</loc>
-    <lastmod>2025-01-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://thisisvietnam.com/cities/ho-chi-minh-city/</loc>
-    <lastmod>2025-01-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://thisisvietnam.com/cities/hue/</loc>
-    <lastmod>2025-01-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://thisisvietnam.com/cities/hoi-an/</loc>
-    <lastmod>2025-01-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Regions -->
-  <url>
-    <loc>https://thisisvietnam.com/regions/mekong-delta/</loc>
-    <lastmod>2025-01-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Food Section -->
-  <url>
-    <loc>https://thisisvietnam.com/food/</loc>
-    <lastmod>2025-01-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1528127269322-539801943592</image:loc>
+      <image:title>Vietnamese History</image:title>
+    </image:image>
   </url>
 
   <!-- Culture Section -->
@@ -78,62 +116,34 @@
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1555921015-5532091f6026</image:loc>
+      <image:title>Vietnamese Culture</image:title>
+    </image:image>
   </url>
 
-  <!-- People Section -->
+  <!-- Travel Guide -->
   <url>
-    <loc>https://thisisvietnam.com/people/</loc>
-    <lastmod>2025-01-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- War & Healing Section -->
-  <url>
-    <loc>https://thisisvietnam.com/war-and-healing/</loc>
-    <lastmod>2025-01-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Daily Life Section -->
-  <url>
-    <loc>https://thisisvietnam.com/daily-life/</loc>
+    <loc>https://thisisvietnam.com/guide/</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Youth Section -->
-  <url>
-    <loc>https://thisisvietnam.com/youth/</loc>
-    <lastmod>2025-01-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Stories Section -->
-  <url>
-    <loc>https://thisisvietnam.com/stories/</loc>
-    <lastmod>2025-01-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Collections Section -->
-  <url>
-    <loc>https://thisisvietnam.com/collections/</loc>
-    <lastmod>2025-01-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- About Section -->
+  <!-- About -->
   <url>
     <loc>https://thisisvietnam.com/about/</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+
+  <!-- Contact -->
+  <url>
+    <loc>https://thisisvietnam.com/contact/</loc>
+    <lastmod>2025-01-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
 
   <!-- Legal Pages -->
