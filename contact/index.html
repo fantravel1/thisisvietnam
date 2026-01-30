@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact ThisIsVietnam - Get in touch for travel tips, partnership inquiries, or to share your Vietnam story. We'd love to hear from you.">
+    <meta name="keywords" content="Contact ThisIsVietnam, Vietnam travel help, Vietnam questions, Vietnam partnership">
+    <meta name="author" content="ThisIsVietnam">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Contact Us | ThisIsVietnam">
+    <meta property="og:description" content="Get in touch with the ThisIsVietnam team.">
+    <meta property="og:url" content="https://thisisvietnam.com/contact/">
+    <meta property="og:type" content="website">
+
+    <title>Contact Us | ThisIsVietnam</title>
+
+    <link rel="canonical" href="https://thisisvietnam.com/contact/">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        .contact-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 120px;
+        }
+
+        .contact-section {
+            padding: 6rem 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        @media (max-width: 968px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        .contact-info h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .contact-info p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            transition: all 0.3s var(--ease-out-expo);
+        }
+
+        .contact-method:hover {
+            border-color: var(--gold);
+            background: rgba(212, 168, 83, 0.05);
+        }
+
+        .contact-method-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(212, 168, 83, 0.1);
+            border-radius: 12px;
+            flex-shrink: 0;
+        }
+
+        .contact-method-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--gold);
+        }
+
+        .contact-method-content h3 {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--white);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-method-content p {
+            font-size: 0.875rem;
+            color: var(--gray);
+            margin: 0;
+        }
+
+        .contact-method-content a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-method-content a:hover {
+            color: var(--white);
+        }
+
+        .contact-form-wrapper {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 2.5rem;
+        }
+
+        .contact-form-wrapper h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--gold);
+            background: rgba(212, 168, 83, 0.05);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 16px;
+        }
+
+        .form-group select option {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-submit {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--black);
+            background: var(--gold);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: all 0.4s var(--ease-out-expo);
+        }
+
+        .form-submit:hover {
+            background: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 168, 83, 0.3);
+        }
+
+        .form-submit svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .form-submit:hover svg {
+            transform: translateX(4px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s var(--ease-out-expo);
+        }
+
+        .social-link:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+        }
+
+        .social-link svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--gray);
+            transition: stroke 0.3s ease;
+        }
+
+        .social-link:hover svg {
+            stroke: var(--black);
+        }
+
+        .faq-section {
+            padding: 6rem 0;
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .faq-item {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+        }
+
+        .faq-item h4 {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--white);
+            margin-bottom: 0.75rem;
+        }
+
+        .faq-item p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+    </style>
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "Contact ThisIsVietnam",
+        "description": "Get in touch with the ThisIsVietnam team",
+        "url": "https://thisisvietnam.com/contact/",
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "ThisIsVietnam",
+            "url": "https://thisisvietnam.com",
+            "email": "hello@thisisvietnam.com"
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Film Grain Overlay -->
+    <div class="film-grain"></div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor">
+        <div class="cursor-ring"></div>
+        <div class="cursor-dot"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="../" class="nav-logo">
+            <span class="logo-this">THIS</span><span class="logo-is">IS</span><span class="logo-vietnam">VIETNAM</span>
+        </a>
+
+        <button class="nav-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="nav-overlay">
+            <div class="nav-overlay-content">
+                <ul class="nav-menu">
+                    <li><a href="../" data-text="Home">Home</a></li>
+                    <li><a href="../cities/" data-text="Cities">Cities</a></li>
+                    <li><a href="../food/" data-text="Food">Food</a></li>
+                    <li><a href="../history/" data-text="History">History</a></li>
+                    <li><a href="../culture/" data-text="Culture">Culture</a></li>
+                    <li><a href="../about/" data-text="About">About</a></li>
+                </ul>
+                <div class="nav-overlay-footer">
+                    <p>Discover the real Vietnam</p>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="contact-hero section-dark">
+            <div class="blob-bg">
+                <div class="blob blob-1"></div>
+                <div class="blob blob-2"></div>
+            </div>
+
+            <div class="container">
+                <div class="hero-badge scroll-reveal">
+                    <span class="badge-line"></span>
+                    <span>Get In Touch</span>
+                    <span class="badge-line"></span>
+                </div>
+
+                <h1 class="hero-title">
+                    <span class="title-line scroll-reveal">
+                        <span class="split-text">Contact</span>
+                    </span>
+                    <span class="title-line scroll-reveal">
+                        <span class="text-gold">Us</span>
+                    </span>
+                </h1>
+
+                <p class="hero-subtitle scroll-reveal">
+                    Questions, stories, or just want to say xin chao?
+                </p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section section-dark">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info scroll-reveal">
+                        <h2>Let's <span class="text-gold">Connect</span></h2>
+                        <p>
+                            Whether you're planning your first trip to Vietnam, looking for hidden gems off the
+                            tourist trail, or want to share your own Vietnamese adventure—we're here for it.
+                        </p>
+                        <p>
+                            For partnership inquiries, press requests, or content collaboration opportunities,
+                            please reach out via the form or email directly.
+                        </p>
+
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <div class="contact-method-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                    </svg>
+                                </div>
+                                <div class="contact-method-content">
+                                    <h3>Email</h3>
+                                    <p><a href="mailto:hello@thisisvietnam.com">hello@thisisvietnam.com</a></p>
+                                </div>
+                            </div>
+
+                            <div class="contact-method">
+                                <div class="contact-method-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                        <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    </svg>
+                                </div>
+                                <div class="contact-method-content">
+                                    <h3>Location</h3>
+                                    <p>Saigon, Vietnam & Worldwide</p>
+                                </div>
+                            </div>
+
+                            <div class="contact-method">
+                                <div class="contact-method-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                </div>
+                                <div class="contact-method-content">
+                                    <h3>Response Time</h3>
+                                    <p>Usually within 24-48 hours</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="social-links">
+                            <a href="#" class="social-link" aria-label="Instagram">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="2" y="2" width="20" height="20" rx="5"/>
+                                    <circle cx="12" cy="12" r="4"/>
+                                    <circle cx="18" cy="6" r="1"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="YouTube">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z"/>
+                                    <path d="M9.75 15.02l5.75-3.27-5.75-3.27v6.54z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Facebook">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Twitter">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-wrapper scroll-reveal">
+                        <h3>Send a Message</h3>
+                        <form action="#" method="POST" class="contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name">Your Name</label>
+                                    <input type="text" id="name" name="name" placeholder="John Doe" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="">Select a topic...</option>
+                                    <option value="travel">Travel Questions</option>
+                                    <option value="partnership">Partnership / Collaboration</option>
+                                    <option value="press">Press Inquiry</option>
+                                    <option value="feedback">Feedback / Suggestions</option>
+                                    <option value="other">Something Else</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Your Message</label>
+                                <textarea id="message" name="message" placeholder="Tell us what's on your mind..." required></textarea>
+                            </div>
+
+                            <button type="submit" class="form-submit">
+                                Send Message
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <span class="section-tag">FAQ</span>
+                    <h2 class="section-title">Common <span class="text-gold">Questions</span></h2>
+                </div>
+
+                <div class="faq-grid">
+                    <div class="faq-item scroll-reveal">
+                        <h4>Do you offer tour services?</h4>
+                        <p>We're primarily a content platform sharing authentic Vietnam stories. However, we can recommend trusted local operators and guides for specific experiences.</p>
+                    </div>
+
+                    <div class="faq-item scroll-reveal">
+                        <h4>Can I contribute content?</h4>
+                        <p>We love hearing from fellow Vietnam enthusiasts! If you have original stories, photography, or insights to share, please reach out via the form above.</p>
+                    </div>
+
+                    <div class="faq-item scroll-reveal">
+                        <h4>Do you work with brands?</h4>
+                        <p>We selectively partner with brands that align with authentic Vietnamese travel and culture. For collaboration inquiries, please select "Partnership" in the form.</p>
+                    </div>
+
+                    <div class="faq-item scroll-reveal">
+                        <h4>How can I support ThisIsVietnam?</h4>
+                        <p>Share our content, follow us on social media, and most importantly—visit Vietnam and support local businesses, artisans, and communities.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="../" class="footer-logo">
+                        <span class="logo-this">THIS</span><span class="logo-is">IS</span><span class="logo-vietnam">VIETNAM</span>
+                    </a>
+                    <p>Authentic stories from the land of the ascending dragon.</p>
+                </div>
+
+                <div class="footer-nav">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="../cities/">Cities</a></li>
+                        <li><a href="../food/">Food</a></li>
+                        <li><a href="../history/">History</a></li>
+                        <li><a href="../culture/">Culture</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-nav">
+                    <h4>Cities</h4>
+                    <ul>
+                        <li><a href="../cities/hanoi/">Hanoi</a></li>
+                        <li><a href="../cities/saigon/">Ho Chi Minh City</a></li>
+                        <li><a href="../cities/danang/">Da Nang</a></li>
+                        <li><a href="../cities/hue/">Hue</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-nav">
+                    <h4>Info</h4>
+                    <ul>
+                        <li><a href="../about/">About</a></li>
+                        <li><a href="../contact/">Contact</a></li>
+                        <li><a href="../privacy/">Privacy</a></li>
+                        <li><a href="../terms/">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 ThisIsVietnam. All rights reserved.</p>
+                <p class="footer-tagline">Made with love for Vietnam</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
