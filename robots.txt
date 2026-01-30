@@ -1,0 +1,10 @@
+# ThisIsVietnam.com Robots.txt
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://thisisvietnam.com/sitemap.xml
+
+# Crawl-delay for politeness
+Crawl-delay: 1

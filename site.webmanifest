@@ -1,0 +1,19 @@
+{
+  "name": "ThisIsVietnam",
+  "short_name": "Vietnam",
+  "description": "Vietnam As It Is - A living cultural knowledge system exploring Vietnamese history, food, culture, and daily life.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF9F6",
+  "theme_color": "#DA251D",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["education", "travel", "lifestyle"],
+  "lang": "en",
+  "dir": "ltr"
+}
